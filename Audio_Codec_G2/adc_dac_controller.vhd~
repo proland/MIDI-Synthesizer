@@ -1,0 +1,226 @@
+-----------------------------------------------------------
+--  Ver  :| Original Author   	    :| Additional Author :| 
+--  V1.0 :| Bharathwaj Muthuswamy   :| Eric Lunty        :| 
+-----------------------------------------------------------
+--	  Minor code tweaks + glue code added            :|
+-----------------------------------------------------------
+
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity adc_dac_controller is port 
+(
+		volumeButton : in std_logic;
+		volumeToggle : in std_logic;
+		noteButton : in std_logic;
+		noteToggle : in std_logic;
+		waveButton : in std_logic;
+		reset : in std_logic;
+		audioClock : in std_logic; -- 18.432 MHz sample clock
+		bitClock : out std_logic;
+		dacLRSelect : out std_logic;
+		dacData : out std_logic;
+		codecRate : out std_logic
+);
+end entity;
+
+architecture behavioral of adc_dac_controller is
+
+	type steps_table is array (0 to 127) of integer range 3 to 5870;
+	type wave_table is array (0 to 127) of integer range 4 to 6690;
+
+	signal internalBitClock : std_logic := '0';
+	signal bitClockCounter : integer range 0 to 255;
+
+	signal internalLRSelect,dataCount : std_logic := '0';
+	signal LRCounter : integer range 0 to 31; 
+	signal leftOutCounter,rightOutCounter : integer range 0 to 15;
+	
+	-- DAC data registers
+	signal dacDataLeftChannelRegister ,dacDataRightChannelRegister : std_logic_vector(15 downto 0);
+			
+	-- wave counter and output data
+	signal waveCounter : integer range 0 to 47;
+	signal waveFromGenerator : integer range -32768 to 32767;
+
+	signal volumeMult: integer range 0 to 10 := 5;	
+	signal note: integer range 0 to 127 := 63;
+	signal waveType: integer range 0 to 3 :=0;
+	
+	signal steps : steps_table :=(5870, 5541, 5230, 4936, 4659, 4398, 4151, 3918, 3698, 3490, 3294, 3110, 2935, 2770, 2615, 2468, 2329, 2199, 2075, 1959, 1849, 1745, 1647, 1555, 1467, 1385, 1307, 1234, 1164, 1099, 1037, 979, 924, 872, 823, 777, 733, 692, 653, 617, 582, 549, 518, 489, 462, 436, 411, 388, 366, 346, 326, 308, 291, 274, 259, 244, 231, 218, 205, 194, 183, 173, 163, 154, 145, 137, 129, 122, 115, 109, 102, 97, 91, 86, 81, 77, 72, 68, 64, 61, 57, 54, 51, 48, 45, 43, 40, 38, 36, 34, 32, 30, 28, 27, 25, 24, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 12, 11, 10, 10, 9, 9, 8, 8, 7, 7, 6, 6, 6, 5, 5, 5, 4, 4, 4, 4, 3);
+	signal waveFactor : steps_table :=(4,4,4,5,5,5,6,6,6,7,7,8,8,9,9,10,10,11,12,13,13,14,15,16,17,18,19,20,21,23,24,26,27,29,31,32,34,36,39,41,43,46,49,52,55,58,62,65,69,73,78,82,87,93,98,104,110,117,124,131,139,147,156,165,175,186,197,209,221,234,248,263,279,295,313,331,351,372,394,418,442,469,497,526,558,591,626,663,703,745,789,836,885,938,994,1053,1116,1182,1252,1327,1406,1490,1578,1672,1771,1877,1988,2107,2232,2365,2505,2654,2812,2980,3157,3345,3543,3754,3977,4214,4465,4730,5011,5309,5625,5960,6314,6690);
+
+	component waveControl is port
+	(
+		waveType : in integer range 0 to 3;
+		waveCounter : in integer range 3 to 5870;
+		waveFactor: in integer range 4 to 6690;
+		volumeControl : in integer range 0 to 10;
+		waveOut : out integer range -32768 to 32767
+	);
+	end component;
+	
+	
+begin
+	
+	--Volume control (sw(17) + key(3))
+	Volume: process(volumeToggle,volumeButton)
+	begin	
+		if rising_edge(volumeButton) then
+				if volumeToggle='0' then
+					if volumeMult = 10 then
+						volumeMult <= 10;
+					else
+						volumeMult <= volumeMult + 1;
+					end if;
+				elsif volumeToggle='1' then
+					if volumeMult = 0 then
+						volumeMult <=0;
+					else
+						volumeMult <= volumeMult -1;
+					end if;
+				end if;
+		end if;	
+	end process;
+	
+	--Waveform control (key(1))
+	changeWave: process(waveButton)
+	begin	
+		if rising_edge(waveButton) then
+			if waveType = 3 then
+				waveType <= 0;
+			else
+				waveType <= waveType + 1;
+			end if;
+		end if;	
+	end process;
+	
+	--Note control (sw(16) + key(2))
+	changeNote: process(noteToggle,noteButton)
+	begin	
+		if rising_edge(noteButton) then
+				if noteToggle='1' then
+					if note = 127 then
+						note <= 127;
+					else
+						note <= note + 1;
+					end if;
+				elsif noteToggle='0' then
+					if note = 0 then
+						note <=0;
+					else
+						note <= note -1;
+					end if;
+				end if;
+		end if;	
+	end process;
+
+	
+	--Generate bit clock
+	--We have an 18.432 MHz reference clock (refer to audio codec datasheet, this is the required frequency)
+	--We need to shift out 16 bits, 2 channels at 48 KHz.  Hence, the count value for flipping the clock bit is
+	--Count = 18.432e6/(48000*16*2) - 1 = 11 (approx)
+	process(audioClock,reset)
+	begin
+		if reset = '0' then
+			bitClockCounter <= 0;
+			internalBitClock <= '0';
+		else
+			if audioClock'event and audioClock = '1' then
+				if bitClockCounter < 5 then					
+					internalBitClock <= '0'; 
+					bitClockCounter <= bitClockCounter + 1;
+				elsif bitClockCounter >= 5 and bitClockCounter < 11 then
+					internalBitClock <= '1'; 
+					bitClockCounter <= bitClockCounter + 1;
+				else
+					internalBitClock <= '0'; 
+					bitClockCounter <= 0;
+				end if;
+			end if;
+		end if;
+	end process;
+	bitClock <= internalBitClock;
+	
+
+	
+	--Generate LeftRight select signals 
+	--Flip every 16 bits, starting on NEGATIVE edge
+	process(internalBitClock,reset)
+	begin
+		if reset = '0' then					
+			dacDataLeftChannelRegister <= X"0000";
+			dacDataRightChannelRegister <= X"0000";
+			LRCounter <= 0;
+			internalLRSelect <= '0'; --Starts at low, fig. 26 on p. 33 of audio codec datasheet
+			dataCount <= '0';
+			leftOutCounter <= 15;
+			rightOutCounter <= 15;
+		else
+			if internalBitClock'event and internalBitClock = '0' then -- flip on negative edge								
+				if LRCounter < 16 then	
+					internalLRSelect <= '1';
+					LRCounter <= LRCounter + 1;
+					leftOutCounter <= leftOutCounter - 1;
+					rightOutCounter <= 15;
+					dataCount <= '0';					
+				elsif LRCounter >= 16 and LRCounter < 32 then
+					internalLRSelect <= '0';
+					LRCounter <= LRCounter + 1;
+					dataCount <= '0';
+					leftOutCounter <= 15;
+					rightOutCounter <= rightOutCounter - 1;
+					if LRCounter = 31 then
+						LRCounter <= 0;
+						dataCount <= '1';
+						--This is where the left/right channels are filled with values
+						dacDataLeftChannelRegister <= std_logic_vector(to_signed(waveFromGenerator,16));
+						dacDataRightChannelRegister <= std_logic_vector(to_signed(waveFromGenerator,16));					
+					end if;									
+				end if;
+			end if;
+		end if;
+	end process;
+
+	dacLRSelect <= internalLRSelect;
+	
+	--dacData output
+	process(internalBitClock,reset,internalLRSelect)
+	begin
+		if reset = '0' then
+			 dacData <= '0';			 
+		else
+			-- start on falling edge of bit clock
+			if internalBitClock'event and internalBitClock = '0' then 
+				--data is sent to dacData, which will eventually connect to the pin AUD_DACDAT
+				if internalLRSelect = '1' then		
+						dacData <= dacDataLeftChannelRegister(leftOutCounter);			
+				else
+						dacData <= dacDataRightChannelRegister(rightOutCounter);			
+				end if;
+			end if;
+		end if;
+	 end process;
+	 
+	--Wave address generator
+	process(dataCount,reset)
+	begin
+		if reset = '0' then
+			waveCounter <= 0;
+		else
+			if dataCount'event and dataCount = '1' then
+				if waveCounter >= steps(note) then
+					waveCounter <= 0;
+				else
+					waveCounter <= waveCounter + 1;
+				end if;
+			end if;
+		end if;
+	end process;
+	
+	codecRate <= dataCount;
+	--Create the wave at specific volumes / frequency
+	wave : waveControl port map (waveType,waveCounter,waveFactor(note),volumeMult,waveFromGenerator);	
+
+end behavioral;

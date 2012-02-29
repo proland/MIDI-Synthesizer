@@ -1,0 +1,1 @@
+Warning (10268): Verilog HDL information at I2C_Controller.v(92): always construct contains both blocking and non-blocking assignments

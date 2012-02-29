@@ -1,0 +1,88 @@
+Altera SOPC Builder Version 10.11 Build 197
+Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
+
+
+# 2012.02.27 16:44:05 (*) mk_custom_sdk starting
+
+# 2012.02.27 16:44:05 (*) Reading project /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf.
+
+# 2012.02.27 16:44:06 (*) Finding all CPUs
+# 2012.02.27 16:44:06 (*) Finding all available components
+# 2012.02.27 16:44:06 (*) Reading /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/.sopc_builder/install.ptf
+
+# 2012.02.27 16:44:06 (*) Found 63 components
+
+# 2012.02.27 16:44:06 (*) Finding all peripherals
+
+# 2012.02.27 16:44:06 (*) Finding software components
+
+# 2012.02.27 16:44:06 (*) (Legacy SDK Generation Skipped)
+# 2012.02.27 16:44:06 (*) (All TCL Script Generation Skipped)
+# 2012.02.27 16:44:06 (*) (No Libraries Built)
+# 2012.02.27 16:44:06 (*) (Contents Generation Skipped)
+# 2012.02.27 16:44:06 (*) mk_custom_sdk finishing
+# 2012.02.27 16:44:06 (*) Starting generation for system: SOPC_File.
+
+.
+.
+.
+.
+.
+.
+.
+.
+
+# 2012.02.27 16:44:07 (*) Running Generator Program for cpu_0
+
+# 2012.02.27 16:44:08 (*) Starting Nios II generation
+# 2012.02.27 16:44:08 (*)   Checking for plaintext license.
+# 2012.02.27 16:44:08 (*)   Couldn't query license setup in Quartus directory /opt/altera/10.1sp1/quartus
+# 2012.02.27 16:44:08 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2012.02.27 16:44:08 (*)   LM_LICENSE_FILE environment variable is empty
+# 2012.02.27 16:44:08 (*)   Plaintext license not found.
+# 2012.02.27 16:44:08 (*)   No license required to generate encrypted Nios II/e.
+# 2012.02.27 16:44:08 (*)   Getting CPU configuration settings
+# 2012.02.27 16:44:08 (*)   Elaborating CPU configuration settings
+# 2012.02.27 16:44:08 (*)   Creating all objects for CPU
+# 2012.02.27 16:44:09 (*)   Generating HDL from CPU objects
+# 2012.02.27 16:44:09 (*)   Creating plain-text HDL
+# 2012.02.27 16:44:12 (*) Done Nios II generation
+
+# 2012.02.27 16:44:12 (*) Running Generator Program for onchip_memory2_0
+
+# 2012.02.27 16:44:13 (*) Running Generator Program for sysid
+
+# 2012.02.27 16:44:13 (*) Running Generator Program for uC_timer
+
+# 2012.02.27 16:44:14 (*) Running Generator Program for jtag_uart_0
+
+# 2012.02.27 16:44:14 (*) Running Generator Program for char_lcd
+
+# 2012.02.27 16:44:15 (*) Running Generator Program for sdram_0
+
+# 2012.02.27 16:44:16 (*) Running Generator Program for uart_0
+
+.
+
+# 2012.02.27 16:44:17 (*) Running Test Generator Program for sdram_0
+
+# 2012.02.27 16:44:17 (*) Making arbitration and system (top) modules.
+
+# 2012.02.27 16:44:20 (*) Generating Quartus symbol for top level: SOPC_File
+
+# 2012.02.27 16:44:20 (*) Symbol /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.bsf already exists, no need to regenerate
+# 2012.02.27 16:44:20 (*) Creating command-line system-generation script: /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File_generation_script
+
+# 2012.02.27 16:44:20 (*) Running setup for HDL simulator: modelsim
+
+
+# 2012.02.27 16:44:21 (*) Completed generation for system: SOPC_File.
+# 2012.02.27 16:44:21 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+  SOPC Builder database : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf 
+  System HDL Model : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.vhd 
+  System Generation Script : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File_generation_script 
+
+# 2012.02.27 16:44:21 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+
+
+Press 'Exit' to exit.
