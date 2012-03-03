@@ -11,8 +11,7 @@ use ieee.numeric_std.all;
 
 entity adc_dac_controller is port 
 (
-		volumeButton : in std_logic;
-		volumeToggle : in std_logic;
+		clk : in std_logic;
 		noteButton : in std_logic;
 		noteToggle : in std_logic;
 		instrumentButton : in std_logic;
@@ -27,6 +26,7 @@ end entity;
 architecture behavioral of adc_dac_controller is
 
 	type table is array (0 to 127) of integer range 0 to 1200000000;
+	type harmonicArray is array (5 downto 0) of std_logic_vector(11 downto 0);
 
 	signal internalBitClock : std_logic := '0';
 	signal bitClockCounter : integer range 0 to 255;
@@ -42,13 +42,9 @@ architecture behavioral of adc_dac_controller is
 	signal waveCounter : integer range 0 to 47;
 	signal waveFromGenerator : integer range -32768 to 32767;
 	
-	signal  sinHarmonic1    : std_logic_vector(11 downto 0);
-	signal  sinHarmonic2    : std_logic_vector(11 downto 0);
-	signal  sinHarmonic3    : std_logic_vector(11 downto 0);
-	signal  sinHarmonic4    : std_logic_vector(11 downto 0);
-	signal  sinHarmonic5    : std_logic_vector(11 downto 0);
-	signal  sinHarmonic6    : std_logic_vector(11 downto 0);
-
+	signal  sinHarmonic : harmonicArray;
+	signal  adsrHarmonic : harmonicArray;
+	
 	signal  temp : std_logic_vector(11 downto 0);
 	
 	signal  SH1    : integer;
@@ -58,7 +54,7 @@ architecture behavioral of adc_dac_controller is
 	signal  SH5    : integer;
 	signal  SH6    : integer;
 
-	signal volumeMult: integer range 0 to 10 := 5;	
+	signal velocityValue: std_logic_vector(11 downto 0) := "000000000000";
 	signal note: integer range 0 to 127 := 63;
 	signal instrumentType: integer range 0 to 4 :=0;
 	
@@ -80,30 +76,24 @@ architecture behavioral of adc_dac_controller is
   	);
 	end component;
 	
+	component adsr is port
+	(
+		reset : in std_logic;
+		clk : in std_logic;
+		attackTime : in std_logic_vector(7 downto 0);
+		decayTime : in std_logic_vector(7 downto 0);
+		sustainLevel : in std_logic_vector(11 downto 0);
+		releaseTime : in std_logic_vector(7 downto 0);
+		velocity : in std_logic_vector(11 downto 0);
+		input : in std_logic_vector(11 downto 0);
+		output : out std_logic_vector(11 downto 0)
+	);
+	end component;
+	
 	
 begin
-	
-	--Volume control (sw(17) + key(3))
-	Volume: process(volumeToggle,volumeButton)
-	begin	
-		if rising_edge(volumeButton) then
-				if volumeToggle='0' then
-					if volumeMult = 10 then
-						volumeMult <= 10;
-					else
-						volumeMult <= volumeMult + 1;
-					end if;
-				elsif volumeToggle='1' then
-					if volumeMult = 0 then
-						volumeMult <=0;
-					else
-						volumeMult <= volumeMult -1;
-					end if;
-				end if;
-		end if;	
-	end process;
-	
-	--Instrument control (key(1))
+		
+	--Instrument control: key(1)
 	changeWave: process(instrumentButton)
 	begin	
 		if rising_edge(instrumentButton) then
@@ -115,15 +105,19 @@ begin
 		end if;	
 	end process;
 	
-	--Note control (sw(16) + key(2))
+	--Note control: sw(17) + key(3)
 	changeNote: process(noteToggle,noteButton)
 	begin	
 		if rising_edge(noteButton) then
+			if velocityValue = "011111111111" then
+				velocityValue <= "000000000000";
+			else
 				if noteToggle='1' then
 					if note = 127 then
 						note <= 127;
 					else
 						note <= note + 1;
+
 					end if;
 				elsif noteToggle='0' then
 					if note = 0 then
@@ -132,6 +126,8 @@ begin
 						note <= note -1;
 					end if;
 				end if;
+				velocityValue <= "011111111111";
+			end if;
 		end if;	
 	end process;
 
@@ -223,19 +219,19 @@ begin
 	 end process;
 	 
 	--Wave generator
-	wave1 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*1,32)),sinHarmonic1,temp,temp);
-	wave2 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*2,32)),sinHarmonic2,temp,temp);
-	wave3 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*3,32)),sinHarmonic3,temp,temp);
-	wave4 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*4,32)),sinHarmonic4,temp,temp);
-	wave5 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*5,32)),sinHarmonic5,temp,temp);
-	wave6 : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*6,32)),sinHarmonic6,temp,temp);
 	
-	SH1 <= to_integer(signed(sinHarmonic1));
-	SH2 <= to_integer(signed(sinHarmonic2));
-	SH3 <= to_integer(signed(sinHarmonic3));
-	SH4 <= to_integer(signed(sinHarmonic4));
-	SH5 <= to_integer(signed(sinHarmonic5));
-	SH6 <= to_integer(signed(sinHarmonic6));
+	GenerateWave:
+		for i in 0 to 5 generate
+			waveGen : waveform_gen port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(note)*(i+1),32)),sinHarmonic(i),temp,temp);
+			adsrGen : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",velocityValue,sinHarmonic(i),adsrHarmonic(i));
+		end generate;
+	
+	SH1 <= to_integer(signed(adsrHarmonic(0)));
+	SH2 <= to_integer(signed(adsrHarmonic(1)));
+	SH3 <= to_integer(signed(adsrHarmonic(2)));
+	SH4 <= to_integer(signed(adsrHarmonic(3)));
+	SH5 <= to_integer(signed(adsrHarmonic(4)));
+	SH6 <= to_integer(signed(adsrHarmonic(5)));
 	
 	--dacData output
 	process(instrumentType)

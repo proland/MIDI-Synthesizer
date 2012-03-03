@@ -7,7 +7,6 @@
 
 -- This design is a VHDL interface to the audio codec on the DE2 board
 -- Placing SW(0) in the UP position runs the design
--- SW(17) + Key(3) controls volume up / down (toggled with switch)
 --	SW(16) + Key(2) controls note up / down (toggled with switch)
 -- The codec is configured for 16-bit 48 KHz sampling frequency.
 
@@ -19,19 +18,19 @@ entity DE1_Audio_AdcDac is port
 	(
 	-- LCD ports                
 	LCD_ON  :  out std_logic;
-      	LCD_BLON :      out std_logic;
-      	LCD_EN  :       out std_logic;
-      	LCD_RS  :       out std_logic;
-      	LCD_RW  :       out std_logic;
-      	LCD_DATA        :       inout   std_logic_vector (7 downto 0);
+   LCD_BLON :      out std_logic;
+   LCD_EN  :       out std_logic;
+   LCD_RS  :       out std_logic;
+   LCD_RW  :       out std_logic;
+   LCD_DATA        :       inout   std_logic_vector (7 downto 0);
 
-     	 -- DRAM ports
-      	DRAM_CLK, DRAM_CKE : OUT STD_LOGIC;
-      	DRAM_ADDR : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-      	DRAM_BA_1, DRAM_BA_0 : BUFFER STD_LOGIC;
-      	DRAM_CS_N, DRAM_CAS_N, DRAM_RAS_N, DRAM_WE_N : OUT STD_LOGIC;
-      	DRAM_DQ : INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-      	DRAM_UDQM, DRAM_LDQM : BUFFER STD_LOGIC ;
+	-- DRAM ports
+   DRAM_CLK, DRAM_CKE : OUT STD_LOGIC;
+   DRAM_ADDR : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
+   DRAM_BA_1, DRAM_BA_0 : BUFFER STD_LOGIC;
+   DRAM_CS_N, DRAM_CAS_N, DRAM_RAS_N, DRAM_WE_N : OUT STD_LOGIC;
+   DRAM_DQ : INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+   DRAM_UDQM, DRAM_LDQM : BUFFER STD_LOGIC ;
 
 	CLOCK_50 : in std_logic;
 	CLOCK_27 : in std_logic;
@@ -52,37 +51,37 @@ architecture topLevel of DE1_Audio_AdcDac is
 	
 	component SOPC_File is port 
 	(
-                 -- 1) global signals:
-                    signal altpll_0_c0_out : OUT STD_LOGIC;
-                    signal altpll_0_c1_out : OUT STD_LOGIC;
-                    signal clk_0 : IN STD_LOGIC;
-                    signal reset_n : IN STD_LOGIC;
+	  -- 1) global signals:
+		  signal altpll_0_c0_out : OUT STD_LOGIC;
+		  signal altpll_0_c1_out : OUT STD_LOGIC;
+		  signal clk_0 : IN STD_LOGIC;
+		  signal reset_n : IN STD_LOGIC;
 
-                 -- the_altpll_0
-                    signal locked_from_the_altpll_0 : OUT STD_LOGIC;
-                    signal phasedone_from_the_altpll_0 : OUT STD_LOGIC;
+	  -- the_altpll_0
+		  signal locked_from_the_altpll_0 : OUT STD_LOGIC;
+		  signal phasedone_from_the_altpll_0 : OUT STD_LOGIC;
 
-                 -- the_char_lcd
-                    signal LCD_E_from_the_char_lcd : OUT STD_LOGIC;
-                    signal LCD_RS_from_the_char_lcd : OUT STD_LOGIC;
-                    signal LCD_RW_from_the_char_lcd : OUT STD_LOGIC;
-                    signal LCD_data_to_and_from_the_char_lcd : INOUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+	  -- the_char_lcd
+		  signal LCD_E_from_the_char_lcd : OUT STD_LOGIC;
+		  signal LCD_RS_from_the_char_lcd : OUT STD_LOGIC;
+		  signal LCD_RW_from_the_char_lcd : OUT STD_LOGIC;
+		  signal LCD_data_to_and_from_the_char_lcd : INOUT STD_LOGIC_VECTOR (7 DOWNTO 0);
 
-                 -- the_sdram_0
-                    signal zs_addr_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (11 DOWNTO 0);
-                    signal zs_ba_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
-                    signal zs_cas_n_from_the_sdram_0 : OUT STD_LOGIC;
-                    signal zs_cke_from_the_sdram_0 : OUT STD_LOGIC;
-                    signal zs_cs_n_from_the_sdram_0 : OUT STD_LOGIC;
-                    signal zs_dq_to_and_from_the_sdram_0 : INOUT STD_LOGIC_VECTOR (15 DOWNTO 0);
-                    signal zs_dqm_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
-                    signal zs_ras_n_from_the_sdram_0 : OUT STD_LOGIC;
-                    signal zs_we_n_from_the_sdram_0 : OUT STD_LOGIC;
-						  
-					-- the_uart_0
-						signal rxd_to_the_uart_0 : IN STD_LOGIC;
-						signal txd_from_the_uart_0 : OUT STD_LOGIC
-        );
+	  -- the_sdram_0
+		  signal zs_addr_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (11 DOWNTO 0);
+		  signal zs_ba_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
+		  signal zs_cas_n_from_the_sdram_0 : OUT STD_LOGIC;
+		  signal zs_cke_from_the_sdram_0 : OUT STD_LOGIC;
+		  signal zs_cs_n_from_the_sdram_0 : OUT STD_LOGIC;
+		  signal zs_dq_to_and_from_the_sdram_0 : INOUT STD_LOGIC_VECTOR (15 DOWNTO 0);
+		  signal zs_dqm_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
+		  signal zs_ras_n_from_the_sdram_0 : OUT STD_LOGIC;
+		  signal zs_we_n_from_the_sdram_0 : OUT STD_LOGIC;
+		  
+	  -- the_uart_0
+		  signal rxd_to_the_uart_0 : IN STD_LOGIC;
+		  signal txd_from_the_uart_0 : OUT STD_LOGIC
+	);
 	end component SOPC_File;
 
 	component audio_codec_controller is port
@@ -120,8 +119,7 @@ architecture topLevel of DE1_Audio_AdcDac is
 
 	component adc_dac_controller is port 
 	(
-		volumeButton : in std_logic;
-		volumeToggle : in std_logic;
+		CLK : in std_logic;
 		noteButton : in std_logic;
 		noteToggle : in std_logic;
 		instrumentButton : in std_logic;
@@ -160,7 +158,8 @@ begin
 	mainSystem: SOPC_File port map
 	(
 		DRAM_CLK, pll_c1, CLOCK_50 , KEY(0),pll_locked,pll_phase,
-		LCD_EN, LCD_RS, LCD_RW, LCD_DATA,DRAM_ADDR, BA, DRAM_CAS_N, DRAM_CKE, DRAM_CS_N,DRAM_DQ, DQM, DRAM_RAS_N, DRAM_WE_N, 		GPIO_1(30), temp
+		LCD_EN, LCD_RS, LCD_RW, LCD_DATA,DRAM_ADDR, BA, DRAM_CAS_N, DRAM_CKE, DRAM_CS_N,DRAM_DQ, DQM, DRAM_RAS_N, DRAM_WE_N, 		
+		GPIO_1(30), temp
 	);
 	
 	audioCodecController : audio_codec_controller port map (SW(0),CLOCK_50,i2cClock,I2C_SDAT,stateOut);
@@ -172,7 +171,7 @@ begin
 	-- we will use a PLL to generate the necessary 18.432 MHz Audio Control clock
 	audioPllClockGen : audioPLL port map (not resetAdcDac,CLOCK_27,audioClock);
 	
-	adcDacController : adc_dac_controller port map (Key(3),SW(17),Key(2),SW(16),Key(1),resetAdcDac,audioClock,bitClock,AUD_DACLRCK,dacDat);
+	adcDacController : adc_dac_controller port map (CLOCK_50,Key(3),SW(17),Key(1),resetAdcDac,audioClock,bitClock,AUD_DACLRCK,dacDat);
 	
 	--Send these values to the pins for the codec
 	I2C_SCLK <= i2cClock;
