@@ -1,13 +1,9 @@
--- DE1 audio codec controller
--- This module is for controlling the codec via i2c
--- This module is executed by the top-level only once
--- References:  
--- 1.  DE1 User's manual
--- 2.  DE1 Reference design(s) (specifically, DE1_Default on DE1 CD)
--- 2.  Audio codec datasheet  
--- Bharathwaj Muthuswamy
--- EECS 3921 Fall 2010
--- muthuswamy@msoe.edu
+-----------------------------------------------------------
+--  Ver  :| Original Author   		:| Additional Author :| 
+--  V1.0 :| Bharathwaj Muthuswamy   :| Eric Lunty        :| 
+-----------------------------------------------------------
+--	  Minor code tweaks + glue code added                 :|
+-----------------------------------------------------------
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -158,31 +154,23 @@ begin
 		-- the 16-bit value for each setting can be found
 		-- in table 29 and 30 on pp. 46-50 of the audio codec datasheet (on the DE1 system CD)
 		with muxSelect select
-			i2cData <= X"0000" when 0, -- dummy data
-						  X"001F" when 1, -- Left input volume is maximum
-						  X"021F" when 2, -- Right input volume is maximum
-						  X"0479" when 3, -- Left output volume is high
-						  X"0679" when 4, -- Right output volume is high
-						  X"0810" when 5, -- No sidetone, DAC: on, disable mic, line input to ADC: on
-						  X"0A06" when 6, -- deemphasis to 48 KHz, enable high pass filter on ADC
-						  X"0C00" when 7, -- no power down mode
-						  X"0E01" when 8, -- MSB first, left-justified, slave mode
-						  X"1002" when 9, -- 384 fs oversampling
-						  X"1201" when 10, -- activate
-						  X"ABCD" when others; -- should never occur
+			i2cData <= 
+			X"0000" when 0, -- dummy data
+			X"001F" when 1, -- Left input volume is maximum
+			X"021F" when 2, -- Right input volume is maximum
+			X"0440" when 3, -- Left output volume is high
+			X"0640" when 4, -- Right output volume is high
+			X"0810" when 5, -- No sidetone, DAC: on, disable mic, line input to ADC: on
+			X"0A07" when 6, -- deemphasis to 48 KHz
+			X"0C00" when 7, -- no power down mode
+			X"0E01" when 8, -- MSB first, left-justified, slave mode
+			X"1002" when 9, -- 384 fs oversampling
+			X"1201" when 10, -- activate
+			X"ABCD" when others; -- should never occur
 		
 						
 		
 		controller : i2c_controller port map (clock,scl,sda,i2cControllerData,i2cRun,i2cStop,ack,reset);
-		--CLOCK       //50 MHz Clock
-		--I2C_SCLK    //I2C CLOCK
- 		--I2C_SDAT    //I2C DATA
-		--I2C_DATA    //DATA:[SLAVE_ADDR,SUB_ADDR,DATA]
-		--GO,         //GO transfor
-		--stop,       //END transfor 
-		--W_R,        //W_R
-		--ACK,        //ACK
-		--RESET       //Global Reset
 		
 		-- User I/O
 		with currentState select

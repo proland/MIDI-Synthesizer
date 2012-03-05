@@ -1,19 +1,14 @@
--- DE1 ADC DAC interface
--- top-level module
--- References:  
--- 1.  DE1 User's manual
--- 2.  DE1 Reference Designs (specifically, DE1_Default)
--- 3.  Digital Differential Analyzer: http://courses.cit.cornell.edu/ece576/DDA/index.htm
--- Bharathwaj Muthuswamy
--- EECS 3921 Fall 2010
--- muthuswamy@msoe.edu
+-----------------------------------------------------------
+--  Ver  :| Original Author   		:| Additional Author :| 
+--  V1.0 :| Bharathwaj Muthuswamy   :| Eric Lunty        :| 
+-----------------------------------------------------------
+--	  Minor code tweaks + glue code added                 :|
+-----------------------------------------------------------
 
--- This design is a VHDL interface to the audio codec on the DE1 board
+-- This design is a VHDL interface to the audio codec on the DE2 board
 -- Placing SW(0) in the UP position runs the design
--- SW(9) is down means a sine wave (if SW(8) is down) of 1 KHz is output on line out 
--- SW(9) is down but SW(8) is up means a square wave of 1 KHz is output on line out
--- (sine wave and square wave ROM are inside adc_dac_controller module below)
--- SW(9) in up position is ADC to DAC loopback
+-- SW(17) + Key(3) controls volume up / down (toggled with switch)
+--	SW(16) + Key(2) controls note up / down (toggled with switch)
 -- The codec is configured for 16-bit 48 KHz sampling frequency.
 
 library ieee;
@@ -22,36 +17,34 @@ use ieee.numeric_std.all;
 
 entity DE1_Audio_AdcDac is port
 	(
-		-- LCD ports                
-		LCD_ON  :  out std_logic;
-                LCD_BLON :      out std_logic;
-                LCD_EN  :       out std_logic;
-                LCD_RS  :       out std_logic;
-                LCD_RW  :       out std_logic;
-                LCD_DATA        :       inout   std_logic_vector (7 downto 0);
+	-- LCD ports                
+	LCD_ON  :  out std_logic;
+      	LCD_BLON :      out std_logic;
+      	LCD_EN  :       out std_logic;
+      	LCD_RS  :       out std_logic;
+      	LCD_RW  :       out std_logic;
+      	LCD_DATA        :       inout   std_logic_vector (7 downto 0);
 
-                -- DRAM ports
-                DRAM_CLK, DRAM_CKE : OUT STD_LOGIC;
-                DRAM_ADDR : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
-                DRAM_BA_1, DRAM_BA_0 : BUFFER STD_LOGIC;
-                DRAM_CS_N, DRAM_CAS_N, DRAM_RAS_N, DRAM_WE_N : OUT STD_LOGIC;
-                DRAM_DQ : INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
-                DRAM_UDQM, DRAM_LDQM : BUFFER STD_LOGIC ;
+     	 -- DRAM ports
+      	DRAM_CLK, DRAM_CKE : OUT STD_LOGIC;
+      	DRAM_ADDR : OUT STD_LOGIC_VECTOR(11 DOWNTO 0);
+      	DRAM_BA_1, DRAM_BA_0 : BUFFER STD_LOGIC;
+      	DRAM_CS_N, DRAM_CAS_N, DRAM_RAS_N, DRAM_WE_N : OUT STD_LOGIC;
+      	DRAM_DQ : INOUT STD_LOGIC_VECTOR(15 DOWNTO 0);
+      	DRAM_UDQM, DRAM_LDQM : BUFFER STD_LOGIC ;
 
-		CLOCK_50 : in std_logic;
-		CLOCK_27 : in std_logic_vector(1 downto 0);
-		KEY : in std_logic_vector(0 downto 0);
-		SW : in std_logic_vector(9 downto 0);
-		AUD_ADCLRCK : out std_logic;
-		AUD_ADCDAT : in std_logic;
-		AUD_DACLRCK : out std_logic;
-		AUD_DACDAT : out std_logic;
-		AUD_XCK : out std_logic;
-		AUD_BCLK : out std_logic;
-		I2C_SCLK : out std_logic; -- master (our module) drives i2c clock
-		I2C_SDAT : inout std_logic;
-		GPIO_1 : inout std_logic_vector(35 downto 0);
-		HEX0,HEX1,HEX2,HEX3 : out std_logic_vector(6 downto 0)
+	CLOCK_50 : in std_logic;
+	CLOCK_27 : in std_logic;
+	KEY : in std_logic_vector(3 downto 0);
+	SW : in std_logic_vector(17 downto 0);
+	AUD_DACLRCK : out std_logic;
+	AUD_DACDAT : out std_logic;
+	AUD_XCK : out std_logic;
+	AUD_BCLK : out std_logic;
+	I2C_SCLK : out std_logic; -- master (our module) drives i2c clock
+	I2C_SDAT : inout std_logic;
+	GPIO_1 : inout std_logic_vector(35 downto 0);
+	HEX0,HEX1,HEX2,HEX3 : out std_logic_vector(6 downto 0)
 	);
 end DE1_Audio_AdcDac;
 	
@@ -84,7 +77,11 @@ architecture topLevel of DE1_Audio_AdcDac is
                     signal zs_dq_to_and_from_the_sdram_0 : INOUT STD_LOGIC_VECTOR (15 DOWNTO 0);
                     signal zs_dqm_from_the_sdram_0 : OUT STD_LOGIC_VECTOR (1 DOWNTO 0);
                     signal zs_ras_n_from_the_sdram_0 : OUT STD_LOGIC;
-                    signal zs_we_n_from_the_sdram_0 : OUT STD_LOGIC
+                    signal zs_we_n_from_the_sdram_0 : OUT STD_LOGIC;
+						  
+					-- the_uart_0
+						signal rxd_to_the_uart_0 : IN STD_LOGIC;
+						signal txd_from_the_uart_0 : OUT STD_LOGIC
         );
 	end component SOPC_File;
 
@@ -123,22 +120,26 @@ architecture topLevel of DE1_Audio_AdcDac is
 
 	component adc_dac_controller is port 
 	(
+		clk : in std_logic;
+		volumeButton : in std_logic;
+		volumeToggle : in std_logic;
+		noteButton : in std_logic;
+		noteToggle : in std_logic;
+		instrumentButton : in std_logic;
 		reset : in std_logic;
-		waveSelect : in std_logic; -- connected to SW(8), default (down) means sine, else square
-		dataSelect : in std_logic; -- connected to SW(9), default (down) means sine on lineout.  up is ADC-DAC loopback
 		audioClock : in std_logic; -- 18.432 MHz sample clock
 		bitClock : out std_logic;
-		adcLRSelect : out std_logic;
 		dacLRSelect : out std_logic;
-		adcData : in std_logic;
-		dacData : out std_logic);
+		dacData : out std_logic
+	);
 	end component;
 	
-	signal i2cClock,audioClock,clock50MHz : std_logic := '0';
+	signal i2cClock,audioClock : std_logic := '0';
+	signal temp : std_logic;
 	signal stateOut : integer range 0 to 7;
 	signal resetAdcDac : std_logic := '0';
 	
-	signal adcLRC,bitClock,adcdat,dacLRC,dacDat : std_logic := '0';
+	signal bitClock,dacLRC,dacDat : std_logic := '0';
 
         signal BA : STD_LOGIC_VECTOR (1 downto 0);
         signal DQM : STD_LOGIC_VECTOR (1 downto 0);
@@ -149,8 +150,8 @@ architecture topLevel of DE1_Audio_AdcDac is
 	
 begin
 
+	--Tell the LCD screen to power up
         LCD_ON <= '1';
-
 
         DRAM_BA_1 <= BA(1);
         DRAM_BA_0 <= BA(0);
@@ -160,58 +161,39 @@ begin
 	mainSystem: SOPC_File port map
 	(
 		DRAM_CLK, pll_c1, CLOCK_50 , KEY(0),pll_locked,pll_phase,
-		LCD_EN, LCD_RS, LCD_RW, LCD_DATA,DRAM_ADDR, BA, DRAM_CAS_N, DRAM_CKE, DRAM_CS_N,DRAM_DQ, DQM, DRAM_RAS_N, DRAM_WE_N
+		LCD_EN, LCD_RS, LCD_RW, LCD_DATA,DRAM_ADDR, BA, DRAM_CAS_N, DRAM_CKE, DRAM_CS_N,DRAM_DQ, DQM, DRAM_RAS_N, DRAM_WE_N, 		GPIO_1(30), temp
 	);
-
-	-- clock buffer to avoid clock skews
-	clock50Mhz<=CLOCK_50;
-	-- clockBuffer50MHz : clockBuffer port map(not SW(0),CLOCK_50,clock50MHz);
 	
-	audioCodecController : audio_codec_controller port map (SW(0),clock50MHz,i2cClock,I2C_SDAT,stateOut);
+	audioCodecController : audio_codec_controller port map (SW(0),CLOCK_50,i2cClock,I2C_SDAT,stateOut);
+	
 	-- we only start the audio controller below long (40 ms) after we reset the system
 	-- the reason is that transmitting all the i2c data takes at least 19 ms (20 KHz clock)
-	adcDacControllerStartDelay : delayCounter port map (SW(0),clock50MHz,resetAdcDac);
-	
+	adcDacControllerStartDelay : delayCounter port map (SW(0),CLOCK_50,resetAdcDac);
+
 	-- we will use a PLL to generate the necessary 18.432 MHz Audio Control clock
-	audioPllClockGen : audioPLL port map (not resetAdcDac,CLOCK_27(0),audioClock);
+	audioPllClockGen : audioPLL port map (not resetAdcDac,CLOCK_27,audioClock);
 	
-	adcDacController : adc_dac_controller port map (resetAdcDac,SW(8),SW(9),audioClock,bitClock,adcLRC,AUD_DACLRCK,adcDat,dacDat);
-	-- send out the clocks
+	adcDacController : adc_dac_controller port map (CLOCK_50,Key(3),SW(17),Key(2),SW(16),Key(1),resetAdcDac,audioClock,bitClock,AUD_DACLRCK,dacDat);
+	
+	--Send these values to the pins for the codec
 	I2C_SCLK <= i2cClock;
 	AUD_BCLK <= bitClock;
-	AUD_XCK <= audioClock;
+	AUD_XCK <= audioClock;	
 	
-	-- input from adc
-	adcDat <= AUD_ADCDAT;
-	
-	-- output assignments
-	AUD_ADCLRCK <= adcLRC;
+	--Output assignments
 	AUD_DACDAT <= dacDat;
-	 
-	-- debug connections to GPIO 1.
-	-- You **should** use an external logic analyzer (or SignalTap)
-	-- to understand timing in this design.  I use an external
-	-- logic analyzer because it is so much quicker and I have only
-	-- 7 signals to look at.
-	GPIO_1(0) <= i2cClock;
-	GPIO_1(1) <= I2C_SDAT;
-	GPIO_1(3) <= audioClock; 
-	GPIO_1(5) <= adcLRC; 
-	GPIO_1(7) <= bitClock; 
-	GPIO_1(9) <= dacDat; 
-	GPIO_1(11) <= adcDat; 
 	
 	HEX3 <= "1111111";
 	HEX2 <= "1111111";
 	HEX1 <= "1111111";
 	with stateOut select
 		HEX0 <= "1000000" when 0, -- resetState
-				  "1111100" when 1, -- transmit
-				  "0100100" when 2, -- checkAcknowledge
-				  "0110000" when 3, -- turnOffi2cControl
-				  "0011001" when 4, -- incrementMuxSelectBits
-				  "0010010" when 5, -- stop
-				  "1111111" when others; -- should not occur
+			"1111100" when 1, -- transmit
+			"0100100" when 2, -- checkAcknowledge
+			"0110000" when 3, -- turnOffi2cControl
+			"0011001" when 4, -- incrementMuxSelectBits
+			"0010010" when 5, -- stop
+			"1111111" when others; -- should not occur
 	
 		
 end topLevel;
