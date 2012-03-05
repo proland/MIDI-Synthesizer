@@ -1,3 +1,10 @@
+-----------------------------------------------------
+--  Ver  :| Original Author   :| Additional Author :| 
+--  V1.0 :| Joe Yang          :| Eric Lunty        :| 
+-----------------------------------------------------
+--	Translated code to VHDL, + minor tweaks    :|
+-----------------------------------------------------
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -23,9 +30,11 @@ architecture behavioral of i2c_controller is
 	signal stop_out : std_logic;
 	signal sclk : std_logic;
 	signal ack1,ack2,ack3 : std_logic;
+	signal sdat : std_logic;
 
 begin
 
+	sdat <= i2c_sdat;
 	--i2c Counter
 	process (clock50,rst)
 	begin
@@ -46,14 +55,16 @@ begin
 	process (clock50,rst)
 	begin
 	
-	--ack <= ack 1 or ack2 or ack3;
+	--WARNING: ACKs are currently disabled, big bug if you turn them on
 	stop <= stop_out;
+	ack <= '0';
+	--ack <= ack1 or ack2 or ack3;
 	
 	if sd_counter >= 4 then
 		if sd_counter <= 30 then
-				i2c_sclk <= sclk or (not clock50);
+			i2c_sclk <= sclk or (not clock50);
 		else
-				i2c_sclk <= sclk or '0';
+			i2c_sclk <= sclk or '0';
 		end if;
 	else
 		i2c_sclk <= sclk or '0';
@@ -75,17 +86,17 @@ begin
 		elsif rising_edge(clock50) then
 			case sd_counter IS
     				when 0=> 
-					ack1<='0';
-					ack2<='0';
-					ack3<='0';
-					stop_out<='0';
-					sd0<='1';
-					sclk<='1';
+				ack1<='0';
+				ack2<='0';
+				ack3<='0';
+				stop_out<='0';
+				sd0<='1';
+				sclk<='1';
     				when 1=>
-					sd<=i2c_data;
-					sd0<='0';
+				sd<=i2c_data;
+				sd0<='0';
     				when 2=> 
-					sclk<='0';
+				sclk<='0';
     				
 				--Slave Address
 				when 3=> sd0<=sd(23);
@@ -100,8 +111,8 @@ begin
 
 				--Sub Address
     				when 12=> 
-					sd0<=sd(15);
-					ack1<=i2c_sdat;
+				sd0<=sd(15);
+				ack1<=sdat;
     				when 13=> sd0<=sd(14);
     				when 14=> sd0<=sd(13);
     				when 15=> sd0<=sd(12);
@@ -113,8 +124,8 @@ begin
     				
 				--Data
 				when 21=> 
-					sd0<=sd(7);
-					ack2<=i2c_sdat;
+				sd0<=sd(7);
+				ack2<=sdat;
     				when 22=> sd0<=sd(6);
     				when 23=> sd0<=sd(5);
     				when 24=> sd0<=sd(4);
@@ -126,17 +137,17 @@ begin
 
 				--Stop Sending
     				when 30=> 
-					sd0<='0';
-					sclk<='0';
-					ack3<=i2c_sdat;
+				sd0<='0';
+				sclk<='0';
+				ack3<=sdat;
     				when 31=> sclk<='1';		
 				when 32=> 
-					sd0<='1';
-					stop_out<='1';
+				sd0<='1';
+				stop_out<='1';
 				
 				--Needed to compile, will never actually occur
 				when others=>
-					sd0<='1';
+				sd0<='1';
 			end case;
 		end if;
 	end process;
