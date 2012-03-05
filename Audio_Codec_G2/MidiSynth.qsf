@@ -482,6 +482,12 @@ set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
 set_location_assignment PIN_D13 -to CLOCK_27[0]
 set_location_assignment PIN_D13 -to CLOCK_27
+set_global_assignment -name VHDL_FILE adsr.vhd
+set_global_assignment -name VERILOG_FILE uarttx.v
+set_global_assignment -name VERILOG_FILE uartrx.v
+set_global_assignment -name VERILOG_FILE MIDIHEX.V
+set_global_assignment -name VERILOG_FILE kcpsm3.v
+set_global_assignment -name VERILOG_FILE MIDItoHexTTY.v
 set_global_assignment -name VHDL_FILE uart_0.vhd
 set_global_assignment -name VHDL_FILE sincos_lut.vhd
 set_global_assignment -name VHDL_FILE waveform_gen.vhd

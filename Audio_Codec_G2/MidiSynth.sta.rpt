@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for MidiSynth
-Wed Feb 29 14:22:24 2012
+Sat Mar  3 15:55:34 2012
 Quartus II Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Web Edition
 
 
@@ -87,7 +87,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; cpu_0.sdc     ; OK     ; Wed Feb 29 14:22:17 2012 ;
+; cpu_0.sdc     ; OK     ; Sat Mar  3 15:55:29 2012 ;
 +---------------+--------+--------------------------+
 
 
@@ -148,26 +148,26 @@ No paths to report.
 +--------+--------------+----------------+-----------+---------------------+------------+---------------------+
 
 
-+----------------------------------------------------------+
-; Propagation Delay                                        ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.584 ; 9.584 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++------------------------------------------------------------+
+; Propagation Delay                                          ;
++------------+-------------+-------+--------+--------+-------+
+; Input Port ; Output Port ; RR    ; RF     ; FR     ; FF    ;
++------------+-------------+-------+--------+--------+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;        ;        ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;        ;        ; 0.868 ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 10.660 ; 10.660 ;       ;
++------------+-------------+-------+--------+--------+-------+
 
 
-+----------------------------------------------------------+
-; Minimum Propagation Delay                                ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.584 ; 9.584 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++------------------------------------------------------------+
+; Minimum Propagation Delay                                  ;
++------------+-------------+-------+--------+--------+-------+
+; Input Port ; Output Port ; RR    ; RF     ; FR     ; FF    ;
++------------+-------------+-------+--------+--------+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;        ;        ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;        ;        ; 0.868 ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 10.660 ; 10.660 ;       ;
++------------+-------------+-------+--------+--------+-------+
 
 
 ----------------------------
@@ -219,7 +219,7 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
 ; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.988 ; 4.988 ;       ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 5.489 ; 5.489 ;       ;
 +------------+-------------+-------+-------+-------+-------+
 
 
@@ -230,7 +230,7 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
 ; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.988 ; 4.988 ;       ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 5.489 ; 5.489 ;       ;
 +------------+-------------+-------+-------+-------+-------+
 
 
@@ -246,15 +246,15 @@ No paths to report.
 +----------------------+-------+------+----------+---------+---------------------+
 
 
-+----------------------------------------------------------+
-; Progagation Delay                                        ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.584 ; 9.584 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++------------------------------------------------------------+
+; Progagation Delay                                          ;
++------------+-------------+-------+--------+--------+-------+
+; Input Port ; Output Port ; RR    ; RF     ; FR     ; FF    ;
++------------+-------------+-------+--------+--------+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;        ;        ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;        ;        ; 0.868 ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 10.660 ; 10.660 ;       ;
++------------+-------------+-------+--------+--------+-------+
 
 
 +----------------------------------------------------------+
@@ -264,7 +264,7 @@ No paths to report.
 +------------+-------------+-------+-------+-------+-------+
 ; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
 ; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.988 ; 4.988 ;       ;
+; CLOCK_50   ; I2C_SCLK    ;       ; 5.489 ; 5.489 ;       ;
 +------------+-------------+-------+-------+-------+-------+
 
 
@@ -306,28 +306,28 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II TimeQuest Timing Analyzer
     Info: Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Feb 29 14:22:15 2012
+    Info: Processing started: Sat Mar  3 15:55:28 2012
 Info: Command: quartus_sta MidiSynth -c MidiSynth
 Info: qsta_default_script.tcl version: #4
 Info: Low junction temperature is 0 degrees C
 Info: High junction temperature is 85 degrees C
 Warning: Timing Analysis is analyzing one or more combinational loops as latches
-    Warning: Node "adcDacController|waveFromGenerator[11]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[15]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[11]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[10]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[14]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[7]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[3]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[13]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[5]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[12]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[8]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[7]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[6]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[2]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[9]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[13]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[5]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[8]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[12]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[1]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[0]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[9]|combout" is a latch
     Warning: Node "adcDacController|waveFromGenerator[4]|combout" is a latch
+    Warning: Node "adcDacController|waveFromGenerator[0]|combout" is a latch
 Info: Evaluating HDL-embedded SDC commands
     Info: Entity alt_jtag_atlantic
         Info: set_false_path -from [get_registers {*|alt_jtag_atlantic:*|jupdate}] -to [get_registers {*|alt_jtag_atlantic:*|jupdate1*}] 
@@ -387,9 +387,9 @@ Warning: Node: adc_dac_controller:adcDacController|internalBitClock was determin
 Warning: Node: CLOCK_27 was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: audio_codec_controller:audioCodecController|currentState.incrementMuxSelectBits was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|dataCount was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[2] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: KEY[3] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|instrumentType[0] was determined to be a clock but was found without an associated clock assignment.
 Warning: PLL cross checking found inconsistent PLL clock settings:
     Warning: Node: mainSystem|the_altpll_0|sd1|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
@@ -535,9 +535,9 @@ Warning: Node: adc_dac_controller:adcDacController|internalBitClock was determin
 Warning: Node: CLOCK_27 was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: audio_codec_controller:audioCodecController|currentState.incrementMuxSelectBits was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|dataCount was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[2] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: KEY[3] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|instrumentType[0] was determined to be a clock but was found without an associated clock assignment.
 Warning: PLL cross checking found inconsistent PLL clock settings:
     Warning: Node: mainSystem|the_altpll_0|sd1|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
@@ -554,9 +554,9 @@ Info: The selected device family is not supported by the report_metastability co
 Info: Design is not fully constrained for setup requirements
 Info: Design is not fully constrained for hold requirements
 Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 42 warnings
-    Info: Peak virtual memory: 283 megabytes
-    Info: Processing ended: Wed Feb 29 14:22:24 2012
-    Info: Elapsed time: 00:00:09
-    Info: Total CPU time (on all processors): 00:00:05
+    Info: Peak virtual memory: 284 megabytes
+    Info: Processing ended: Sat Mar  3 15:55:34 2012
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 

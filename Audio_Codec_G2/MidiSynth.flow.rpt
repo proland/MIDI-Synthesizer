@@ -1,5 +1,5 @@
 Flow report for MidiSynth
-Wed Feb 29 14:22:23 2012
+Sat Mar  3 15:55:34 2012
 Quartus II Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Web Edition
 
 
@@ -38,21 +38,21 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Flow Summary                                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Flow Status                        ; Successful - Wed Feb 29 14:22:19 2012         ;
+; Flow Status                        ; Successful - Sat Mar  3 15:55:31 2012         ;
 ; Quartus II Version                 ; 10.1 Build 197 01/19/2011 SP 1 SJ Web Edition ;
 ; Revision Name                      ; MidiSynth                                     ;
 ; Top-level Entity Name              ; DE1_Audio_AdcDac                              ;
 ; Family                             ; Cyclone II                                    ;
 ; Device                             ; EP2C35F672C6                                  ;
 ; Timing Models                      ; Final                                         ;
-; Total logic elements               ; 5,812 / 33,216 ( 17 % )                       ;
-;     Total combinational functions  ; 5,637 / 33,216 ( 17 % )                       ;
-;     Dedicated logic registers      ; 1,536 / 33,216 ( 5 % )                        ;
-; Total registers                    ; 1588                                          ;
+; Total logic elements               ; 5,919 / 33,216 ( 18 % )                       ;
+;     Total combinational functions  ; 5,745 / 33,216 ( 17 % )                       ;
+;     Dedicated logic registers      ; 1,567 / 33,216 ( 5 % )                        ;
+; Total registers                    ; 1619                                          ;
 ; Total pins                         ; 145 / 475 ( 31 % )                            ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 371,712 / 483,840 ( 77 % )                    ;
-; Embedded Multiplier 9-bit elements ; 0 / 70 ( 0 % )                                ;
+; Embedded Multiplier 9-bit elements ; 12 / 70 ( 17 % )                              ;
 ; Total PLLs                         ; 2 / 4 ( 50 % )                                ;
 +------------------------------------+-----------------------------------------------+
 
@@ -62,7 +62,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 02/29/2012 14:21:21 ;
+; Start date & time ; 03/03/2012 15:54:23 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; MidiSynth           ;
 +-------------------+---------------------+
@@ -73,7 +73,7 @@ applicable agreement for further details.
 +-------------------------------------+------------------------------------------------------------------+---------------+------------------+------------+
 ; Assignment Name                     ; Value                                                            ; Default Value ; Entity Name      ; Section Id ;
 +-------------------------------------+------------------------------------------------------------------+---------------+------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 48549626554605.133055048105318                                   ; --            ; --               ; --         ;
+; COMPILER_SIGNATURE_ID               ; 48549626554605.133081526308016                                   ; --            ; --               ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                                               ; --            ; --               ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                                                ; --            ; --               ; --         ;
 ; MISC_FILE                           ; /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/MidiSynth.dpf ; --            ; --               ; --         ;
@@ -96,11 +96,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:29     ; 1.0                     ; --                  ; 00:00:28                           ;
+; Analysis & Synthesis      ; 00:00:40     ; 1.0                     ; --                  ; 00:00:37                           ;
 ; Fitter                    ; 00:00:18     ; 1.0                     ; --                  ; 00:00:18                           ;
 ; Assembler                 ; 00:00:03     ; 1.0                     ; --                  ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:08     ; 1.0                     ; --                  ; 00:00:05                           ;
-; Total                     ; 00:00:58     ; --                      ; --                  ; 00:00:53                           ;
+; TimeQuest Timing Analyzer ; 00:00:06     ; 1.0                     ; --                  ; 00:00:05                           ;
+; Total                     ; 00:01:07     ; --                      ; --                  ; 00:01:02                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
