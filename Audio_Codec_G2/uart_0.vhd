@@ -147,9 +147,7 @@ architecture europa of uart_0_log_module is
       when X"7d" => result := '}' ;
       when X"7e" => result := '~' ;
       when X"7f" => result := '_' ;
-      WHEN others =>
-        ASSERT False REPORT "data contains a non-printable character" SEVERITY Warning;
-        result := nul;
+      WHEN others => result := '&' ;
     END case;
     RETURN result;
   end bin_to_char;
@@ -1348,6 +1346,7 @@ begin
 
   end process;
 
+  divisor_constant <= std_logic_vector'("11001000000");
   baud_divisor <= divisor_constant;
   cts_status_bit <= std_logic'('0');
   dcts_status_bit <= std_logic'('0');
@@ -1416,11 +1415,7 @@ begin
 
     end process;
 
-    divisor_constant <= std_logic_vector'("00000000100");
 --synthesis translate_on
---synthesis read_comments_as_HDL on
---    divisor_constant <= std_logic_vector'("11001000000");
---synthesis read_comments_as_HDL off
 
 end europa;
 

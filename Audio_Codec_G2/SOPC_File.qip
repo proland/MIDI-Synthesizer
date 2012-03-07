@@ -13,5 +13,5 @@ set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) altpll_0.v
 # sdram_0
 # uart_0
 # null
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 005056C0000800000135C132ECF4 
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 005056C0000800000135E543B56E 
  

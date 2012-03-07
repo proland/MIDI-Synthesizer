@@ -43,7 +43,9 @@ entity DE1_Audio_AdcDac is port
 	I2C_SCLK : out std_logic; -- master (our module) drives i2c clock
 	I2C_SDAT : inout std_logic;
 	GPIO_1 : inout std_logic_vector(35 downto 0);
-	HEX0,HEX1,HEX2,HEX3 : out std_logic_vector(6 downto 0)
+	HEX0,HEX1,HEX2,HEX3 : out std_logic_vector(6 downto 0);
+	UART_RXD : in std_logic;
+	UART_TXD : out std_logic
 	);
 end DE1_Audio_AdcDac;
 	
@@ -119,9 +121,11 @@ architecture topLevel of DE1_Audio_AdcDac is
 
 	component adc_dac_controller is port 
 	(
-		CLK : in std_logic;
+		clk : in std_logic;
 		noteButton : in std_logic;
 		noteToggle : in std_logic;
+		noteButton2 : in std_logic;
+		noteToggle2 : in std_logic;
 		instrumentButton : in std_logic;
 		reset : in std_logic;
 		audioClock : in std_logic; -- 18.432 MHz sample clock
@@ -159,7 +163,7 @@ begin
 	(
 		DRAM_CLK, pll_c1, CLOCK_50 , KEY(0),pll_locked,pll_phase,
 		LCD_EN, LCD_RS, LCD_RW, LCD_DATA,DRAM_ADDR, BA, DRAM_CAS_N, DRAM_CKE, DRAM_CS_N,DRAM_DQ, DQM, DRAM_RAS_N, DRAM_WE_N, 		
-		GPIO_1(30), temp
+		UART_RXD, UART_TXD
 	);
 	
 	audioCodecController : audio_codec_controller port map (SW(0),CLOCK_50,i2cClock,I2C_SDAT,stateOut);
@@ -171,7 +175,17 @@ begin
 	-- we will use a PLL to generate the necessary 18.432 MHz Audio Control clock
 	audioPllClockGen : audioPLL port map (not resetAdcDac,CLOCK_27,audioClock);
 	
-	adcDacController : adc_dac_controller port map (CLOCK_50,Key(3),SW(17),Key(1),resetAdcDac,audioClock,bitClock,AUD_DACLRCK,dacDat);
+	adcDacController : adc_dac_controller port map 
+	(
+	--Clk
+	CLOCK_50,
+	
+	--Buttons/Switches
+	Key(3),SW(17),Key(2),SW(16),Key(1),
+	
+	--Signals
+	resetAdcDac,audioClock,bitClock,AUD_DACLRCK,dacDat
+	);
 	
 	--Send these values to the pins for the codec
 	I2C_SCLK <= i2cClock;

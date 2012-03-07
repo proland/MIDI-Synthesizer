@@ -1641,7 +1641,7 @@ SYSTEM SOPC_File
          Has_Clock = "1";
          View 
          {
-            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>4F4C1535</b> (timestamp: Mon Feb 27, 2012 @4:43 PM)";
+            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>4F5550CD</b> (timestamp: Mon Mar 5, 2012 @4:48 PM)";
             MESSAGES 
             {
             }
@@ -1650,7 +1650,7 @@ SYSTEM SOPC_File
       WIZARD_SCRIPT_ARGUMENTS 
       {
          id = "0u";
-         timestamp = "1330386229u";
+         timestamp = "1330991309u";
          regenerate_values = "0";
          MAKE 
          {
@@ -1659,7 +1659,7 @@ SYSTEM SOPC_File
                verifysysid 
                {
                   All_Depends_On = "0";
-                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x01005060 --id=0 --timestamp=1330386229";
+                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x01005060 --id=0 --timestamp=1330991309";
                   Is_Phony = "1";
                   Target_File = "dummy_verifysysid_file";
                }
@@ -3144,7 +3144,7 @@ SYSTEM SOPC_File
          sync_reg_depth = "2";
          use_cts_rts = "0";
          use_eop_register = "0";
-         sim_true_baud = "0";
+         sim_true_baud = "1";
          sim_char_stream = "";
          relativepath = "1";
       }
