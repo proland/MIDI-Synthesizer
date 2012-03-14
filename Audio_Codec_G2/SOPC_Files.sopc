@@ -42,19 +42,19 @@
          type = "int";
       }
    }
-   element sysid.control_slave
-   {
-      datum baseAddress
-      {
-         value = "16797792";
-         type = "long";
-      }
-   }
    element char_lcd.control_slave
    {
       datum baseAddress
       {
          value = "16797760";
+         type = "long";
+      }
+   }
+   element sysid.control_slave
+   {
+      datum baseAddress
+      {
+         value = "16797792";
          type = "long";
       }
    }
@@ -103,6 +103,14 @@
          type = "long";
       }
    }
+   element sdram_0.s1
+   {
+      datum baseAddress
+      {
+         value = "8388608";
+         type = "long";
+      }
+   }
    element onchip_memory2_0.s1
    {
       datum baseAddress
@@ -124,14 +132,6 @@
       datum baseAddress
       {
          value = "16797696";
-         type = "long";
-      }
-   }
-   element sdram_0.s1
-   {
-      datum baseAddress
-      {
-         value = "8388608";
          type = "long";
       }
    }
@@ -184,8 +184,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="MidiSynth.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="-29600953272" />
- <parameter name="timeStamp" value="1330386229083" />
+ <parameter name="systemHash" value="-26946167783" />
+ <parameter name="timeStamp" value="1330991308664" />
  <module kind="clock_source" version="10.1" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -557,7 +557,7 @@
   <parameter name="simCharStream" value="" />
   <parameter name="simInteractiveInputEnable" value="false" />
   <parameter name="simInteractiveOutputEnable" value="false" />
-  <parameter name="simTrueBaud" value="false" />
+  <parameter name="simTrueBaud" value="true" />
   <parameter name="stopBits" value="1" />
   <parameter name="syncRegDepth" value="2" />
   <parameter name="useCtsRts" value="false" />

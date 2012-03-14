@@ -28,8 +28,30 @@ port
 	(
 	clk      : in  std_logic;
 	en       : in  std_logic;
-	addr     : in  std_logic_vector(11 downto 0);
-	sin_out  : out std_logic_vector(11 downto 0)
+	
+	--Address inputs
+	addr1     : in  std_logic_vector(11 downto 0);
+	addr2     : in  std_logic_vector(11 downto 0);
+	addr3     : in  std_logic_vector(11 downto 0);
+	addr4     : in  std_logic_vector(11 downto 0);
+	addr5     : in  std_logic_vector(11 downto 0);
+	addr6     : in  std_logic_vector(11 downto 0);
+	addr7     : in  std_logic_vector(11 downto 0);
+	addr8     : in  std_logic_vector(11 downto 0);
+	addr9     : in  std_logic_vector(11 downto 0);
+	addr10    : in  std_logic_vector(11 downto 0);
+	
+	--Sine outputs
+	sin_out1  : out std_logic_vector(11 downto 0);
+	sin_out2  : out std_logic_vector(11 downto 0);
+	sin_out3  : out std_logic_vector(11 downto 0);
+	sin_out4  : out std_logic_vector(11 downto 0);
+	sin_out5  : out std_logic_vector(11 downto 0);
+	sin_out6  : out std_logic_vector(11 downto 0);
+	sin_out7  : out std_logic_vector(11 downto 0);
+	sin_out8  : out std_logic_vector(11 downto 0);
+	sin_out9  : out std_logic_vector(11 downto 0);
+	sin_out10 : out std_logic_vector(11 downto 0)
 	);
 end entity;
 
@@ -564,7 +586,16 @@ rom_select: process (clk)
 begin
   if clk'event and clk = '1' then
     if en = '1' then
-      sin_out <= SIN_ROM(conv_integer(addr));
+      sin_out1 <= SIN_ROM(conv_integer(addr1));
+		sin_out2 <= SIN_ROM(conv_integer(addr2));
+		sin_out3 <= SIN_ROM(conv_integer(addr3));
+		sin_out4 <= SIN_ROM(conv_integer(addr4));
+		sin_out5 <= SIN_ROM(conv_integer(addr5));
+		sin_out6 <= SIN_ROM(conv_integer(addr6));
+		sin_out7 <= SIN_ROM(conv_integer(addr7));
+		sin_out8 <= SIN_ROM(conv_integer(addr8));
+		sin_out9 <= SIN_ROM(conv_integer(addr9));
+		sin_out10 <= SIN_ROM(conv_integer(addr10));
     end if;
   end if;
 end process rom_select;
