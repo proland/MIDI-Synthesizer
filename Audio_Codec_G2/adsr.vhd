@@ -8,10 +8,10 @@ entity adsr is port
 	(
     reset : in std_logic;
     clk : in std_logic;
-	 attackTime : in std_logic_vector(7 downto 0);
-	 decayTime : in std_logic_vector(7 downto 0);
-	 sustainLevel : in std_logic_vector(11 downto 0);
-	 releaseTime : in std_logic_vector(7 downto 0);
+    attackTime : in std_logic_vector(7 downto 0);
+    decayTime : in std_logic_vector(7 downto 0);
+    sustainLevel : in std_logic_vector(11 downto 0);
+    releaseTime : in std_logic_vector(7 downto 0);
     velocity : in std_logic_vector(11 downto 0);
     input : in std_logic_vector(11 downto 0);
     output : out std_logic_vector(11 downto 0)

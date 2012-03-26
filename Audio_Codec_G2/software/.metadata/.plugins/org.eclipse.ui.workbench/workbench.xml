@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workbench version="2.0">
+<workbenchAdvisor/>
+<window height="767" maximized="true" width="1282" x="33" y="43">
+<fastViewData fastViewLocation="1024"/>
+<perspectiveBar>
+<itemSize x="160"/>
+</perspectiveBar>
+<coolbarLayout locked="0">
+<coolItem id="group.file" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.file" itemType="typeToolBarContribution" x="138" y="30"/>
+<coolItem id="additions" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.cdt.ui.CElementCreationActionSet" itemType="typeToolBarContribution" x="156" y="30"/>
+<coolItem id="org.eclipse.debug.ui.launchActionSet" itemType="typeToolBarContribution" x="120" y="30"/>
+<coolItem id="org.eclipse.search.searchActionSet" itemType="typeToolBarContribution" x="68" y="30"/>
+<coolItem id="org.eclipse.ui.WorkingSetActionSet" itemType="typeToolBarContribution" x="48" y="30"/>
+<coolItem id="group.nav" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
+<coolItem id="group.editor" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
+<coolItem id="org.eclipse.cdt.ui.editor.asm.AsmEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.cdt.ui.editor.CEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="group.help" itemType="typeGroupMarker"/>
+<coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
+</coolbarLayout>
+<page focus="true" label="Workspace - Nios II C/C++">
+<editors>
+<editorArea activeWorkbook="DefaultEditorWorkbook">
+<info part="DefaultEditorWorkbook">
+<folder appearance="1" expanded="2">
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</editorArea>
+<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="hello_ucosii.c" partName="hello_ucosii.c" path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth/hello_ucosii.c" title="hello_ucosii.c" tooltip="midi_synth/hello_ucosii.c" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/midi_synth/hello_ucosii.c"/>
+</editor>
+<editor id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" partName="system.h" path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib/Debug/system_description/system.h" title="system.h" tooltip="midi_synth_syslib/Debug/system_description/system.h" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/midi_synth_syslib/Debug/system_description/system.h"/>
+</editor>
+</editors>
+<views>
+<view id="org.eclipse.ui.views.PropertySheet" partName="Properties">
+<viewState/>
+</view>
+<view id="org.eclipse.cdt.make.ui.views.MakeView" partName="Make Targets">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.DebugView" partName="Debug">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.ProblemView" partName="Problems">
+<viewState columnWidth0="256" columnWidth1="81" columnWidth2="156" columnWidth3="688" columnWidth4="0" horizontalPosition="0" verticalPosition="0">
+<columnOrder columnOrderIndex="0"/>
+<columnOrder columnOrderIndex="1"/>
+<columnOrder columnOrderIndex="2"/>
+<columnOrder columnOrderIndex="3"/>
+<columnOrder columnOrderIndex="4"/>
+</viewState>
+</view>
+<view id="org.eclipse.ui.console.ConsoleView" partName="Console">
+<viewState/>
+</view>
+<view id="org.eclipse.debug.ui.BreakpointView" partName="Breakpoints">
+<viewState>
+<isTrackingSelection value="false"/>
+</viewState>
+</view>
+<view id="org.eclipse.debug.ui.VariableView" partName="Variables">
+<viewState/>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState columnWidth0="43" columnWidth1="19" columnWidth2="253" columnWidth3="78" columnWidth4="153" columnWidth5="716" columnWidth6="0" horizontalPosition="0" verticalPosition="0">
+<columnOrder columnOrderIndex="0"/>
+<columnOrder columnOrderIndex="1"/>
+<columnOrder columnOrderIndex="2"/>
+<columnOrder columnOrderIndex="3"/>
+<columnOrder columnOrderIndex="4"/>
+<columnOrder columnOrderIndex="5"/>
+<columnOrder columnOrderIndex="6"/>
+</viewState>
+</view>
+<view id="com.altera.nj.ui.Nios2CView" partName="Nios II C/C++ Projects">
+<viewState horizontalPosition="0" verticalPosition="0">
+<expanded>
+<element path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib"/>
+<element path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib/Debug"/>
+<element path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib/Debug/system_description"/>
+</expanded>
+<selection>
+<element path="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib"/>
+</selection>
+<customFilters userDefinedPatternsEnabled="false">
+<xmlDefinedFilters>
+<child filterId="com.altera.nj.ui.Nios2CView_patternFilterId_.*" isEnabled="true"/>
+<child filterId="com.altera.nj.ui.Nios2CView.ExecutableFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.SharedFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.ClosedProjectFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.NonCElementFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.ObjectFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.ArchiveFilter" isEnabled="false"/>
+<child filterId="com.altera.nj.ui.Nios2CView.NonCProjectsFilter" isEnabled="false"/>
+</xmlDefinedFilters>
+</customFilters>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
+<viewState/>
+</view>
+</views>
+<perspectives activePart="org.eclipse.cdt.ui.editor.CEditor" activePerspective="com.altera.nj.ui.CPerspective">
+<perspective editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="com.altera.nj.ui.Nios2CPerspectiveFactory" id="com.altera.nj.ui.CPerspective" label="Nios II C/C++"/>
+<alwaysOnActionSet id="com.altera.nj.doc.user.NiosIIDocumentation"/>
+<alwaysOnActionSet id="com.altera.nj.launch.NiosIIToolsMenuActionSet"/>
+<alwaysOnActionSet id="com.altera.nj.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.openExternalFile"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.WorkingSetActionSet"/>
+<alwaysOnActionSet id="org.eclipse.update.ui.softwareUpdates"/>
+<alwaysOnActionSet id="org.eclipse.cdt.ui.SearchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.cdt.ui.CElementCreationActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.search.ui.views.SearchView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.views.ProblemView"/>
+<show_view_action id="com.altera.nj.ui.Nios2CView"/>
+<show_view_action id="org.eclipse.ui.views.ResourceNavigator"/>
+<show_view_action id="org.eclipse.ui.views.PropertySheet"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<show_view_action id="com.altera.ide.chac.views.ChacView"/>
+<new_wizard_action id="com.altera.nj.ui.wizards.ManagedNJWizard"/>
+<new_wizard_action id="com.altera.nj.ui.wizards.ManagedSDKCWizard"/>
+<new_wizard_action id="com.altera.nj.ui.wizards.NJDIYWizard"/>
+<new_wizard_action id="com.altera.nj.ui.wizards.ManagedLibWizard"/>
+<new_wizard_action id="org.eclipse.cdt.ui.wizards.NewSourceFolderCreationWizard"/>
+<new_wizard_action id="org.eclipse.cdt.ui.wizards.NewSourceFileCreationWizard"/>
+<new_wizard_action id="org.eclipse.cdt.ui.wizards.NewHeaderFileCreationWizard"/>
+<new_wizard_action id="org.eclipse.cdt.ui.wizards.NewClassCreationWizard"/>
+<perspective_action id="org.eclipse.debug.ui.DebugPerspective"/>
+<perspective_action id="org.eclipse.team.ui.TeamSynchronizingPerspective"/>
+<perspective_action id="com.altera.ide.gprof.ui.GprofPerspective"/>
+<view id="com.altera.nj.ui.Nios2CView"/>
+<view id="org.eclipse.ui.views.ProblemView"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.PropertySheet"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
+<layout>
+<mainWindow>
+<info folder="true" part="topLeft">
+<folder activePageID="com.altera.nj.ui.Nios2CView" appearance="2" expanded="2">
+<page content="com.altera.nj.ui.Nios2CView" label="Nios II C/C++ Projects"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@1497b1" ratio="0.75" ratioLeft="756" ratioRight="252" relationship="2" relative="topLeft">
+<folder appearance="2" expanded="2">
+<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.25" ratioLeft="252" ratioRight="756" relationship="2" relative="topLeft"/>
+<info folder="true" part="bottom" ratio="0.94882435" ratioLeft="686" ratioRight="37" relationship="4" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
+<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="Properties"/>
+<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+<part id="1"/>
+<part id="2"/>
+<part id="3"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="topRight" ratio="0.75" ratioLeft="567" ratioRight="189" relationship="2" relative="org.eclipse.ui.editorss">
+<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">
+<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.ui.internal.ViewStack@5dc268" ratio="0.5" ratioLeft="266" ratioRight="266" relationship="4" relative="topRight">
+<folder activePageID="org.eclipse.cdt.make.ui.views.MakeView" appearance="2" expanded="2">
+<page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Targets"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
+<part id="0"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+<perspective editorAreaVisible="1" fixed="0" version="0.016">
+<descriptor class="org.eclipse.debug.internal.ui.DebugPerspectiveFactory" id="org.eclipse.debug.ui.DebugPerspective" label="Debug"/>
+<alwaysOnActionSet id="com.altera.nj.doc.user.NiosIIDocumentation"/>
+<alwaysOnActionSet id="com.altera.nj.launch.NiosIIToolsMenuActionSet"/>
+<alwaysOnActionSet id="com.altera.nj.ui.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.cheatsheets.actionSet"/>
+<alwaysOnActionSet id="org.eclipse.search.searchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.openExternalFile"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.annotationNavigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.navigation"/>
+<alwaysOnActionSet id="org.eclipse.ui.edit.text.actionSet.convertLineDelimitersTo"/>
+<alwaysOnActionSet id="org.eclipse.ui.externaltools.ExternalToolsSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.actionSet.keyBindings"/>
+<alwaysOnActionSet id="org.eclipse.ui.WorkingSetActionSet"/>
+<alwaysOnActionSet id="org.eclipse.update.ui.softwareUpdates"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.launchActionSet"/>
+<alwaysOnActionSet id="org.eclipse.cdt.debug.ui.debugActionSet"/>
+<alwaysOnActionSet id="org.eclipse.ui.NavigateActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.breakpointActionSet"/>
+<alwaysOnActionSet id="org.eclipse.debug.ui.debugActionSet"/>
+<show_view_action id="org.eclipse.debug.ui.DebugView"/>
+<show_view_action id="org.eclipse.debug.ui.VariableView"/>
+<show_view_action id="org.eclipse.debug.ui.BreakpointView"/>
+<show_view_action id="org.eclipse.debug.ui.ExpressionView"/>
+<show_view_action id="org.eclipse.ui.views.ContentOutline"/>
+<show_view_action id="org.eclipse.ui.console.ConsoleView"/>
+<show_view_action id="org.eclipse.ui.views.TaskList"/>
+<show_view_action id="com.altera.nj.debug.trace.view.TraceView"/>
+<show_view_action id="org.eclipse.cdt.debug.ui.SignalsView"/>
+<show_view_action id="org.eclipse.debug.ui.RegisterView"/>
+<show_view_action id="org.eclipse.debug.ui.MemoryView"/>
+<show_view_action id="org.eclipse.cdt.debug.ui.DisassemblyView"/>
+<show_view_action id="org.eclipse.cdt.debug.ui.ModulesView"/>
+<show_view_action id="org.eclipse.pde.runtime.LogView"/>
+<perspective_action id="com.altera.nj.ui.CPerspective"/>
+<perspective_action id="com.altera.ide.gprof.ui.GprofPerspective"/>
+<perspective_action id="org.eclipse.cdt.ui.CPerspective"/>
+<view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
+<view id="org.eclipse.debug.ui.DebugView"/>
+<view id="org.eclipse.debug.ui.VariableView"/>
+<view id="org.eclipse.debug.ui.BreakpointView"/>
+<view id="org.eclipse.ui.views.ContentOutline"/>
+<view id="org.eclipse.cdt.make.ui.views.MakeView"/>
+<layout>&#x0A;<mainWindow>&#x0A;<info folder="true" part="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.DebugView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.DebugView" label="Debug"/>
+<page content="org.eclipse.ui.views.ResourceNavigator" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="stickyFolderRight" ratio="0.74965036" ratioLeft="1072" ratioRight="358" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder appearance="2" expanded="2">&#x0A;<page content="org.eclipse.help.ui.HelpView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.internal.introview" label="LabelNotFound"/>
+<page content="org.eclipse.ui.cheatsheets.views.CheatSheetView" label="LabelNotFound"/>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ConsoleFolderView" ratio="0.6965409" ratioLeft="443" ratioRight="193" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
+<page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
+<page content="org.eclipse.ui.views.PropertySheet" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.MemoryView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info part="org.eclipse.ui.editorss" ratio="0.454844" ratioLeft="277" ratioRight="332" relationship="4" relative="org.eclipse.debug.internal.ui.NavigatorFolderView"/>
+<info folder="true" part="org.eclipse.debug.internal.ui.OutlineFolderView" ratio="0.74965036" ratioLeft="1072" ratioRight="358" relationship="2" relative="org.eclipse.ui.editorss">&#x0A;<folder activePageID="org.eclipse.ui.views.ContentOutline" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.ui.views.ContentOutline" label="Outline"/>
+<page content="org.eclipse.cdt.make.ui.views.MakeView" label="Make Targets"/>
+<page content="org.eclipse.cdt.debug.ui.DisassemblyView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+<info folder="true" part="org.eclipse.debug.internal.ui.ToolsFolderView" ratio="0.5" ratioLeft="715" ratioRight="715" relationship="2" relative="org.eclipse.debug.internal.ui.NavigatorFolderView">&#x0A;<folder activePageID="org.eclipse.debug.ui.VariableView" appearance="2" expanded="2">&#x0A;<page content="org.eclipse.debug.ui.VariableView" label="Variables"/>
+<page content="org.eclipse.debug.ui.BreakpointView" label="Breakpoints"/>
+<page content="org.eclipse.debug.ui.ExpressionView" label="LabelNotFound"/>
+<page content="org.eclipse.debug.ui.RegisterView" label="LabelNotFound"/>
+<page content="com.altera.nj.debug.trace.view.TraceView" label="LabelNotFound"/>
+<page content="org.eclipse.cdt.debug.ui.SignalsView" label="LabelNotFound"/>
+<page content="org.eclipse.cdt.debug.ui.ModulesView" label="LabelNotFound"/>
+<presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">&#x0A;<part id="0"/>
+<part id="1"/>
+</presentation>
+</folder>
+</info>
+</mainWindow>
+</layout>
+</perspective>
+</perspectives>
+<workingSets/>
+<navigationHistory>
+<editors>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/midi_synth/hello_ucosii.c"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/midi_synth_syslib/Debug/system_description/system.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/midi_synth_syslib/system.stf"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/midi_synth_syslib/Debug/system_description/system.h"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" path="/midi_synth/hello_ucosii.c"/>
+</editors>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2829" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2584" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2645" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2618" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2822" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="3121" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2785" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="3121" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2590" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2716" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="system.stf" index="2">
+<position/>
+</item>
+<item historyLabel="system.h" index="1">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11773" y="10"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11773" y="10"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2608" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11773" y="10"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11741" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2348" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11741" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2155" y="24"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11741" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2181" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11741" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2651" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11859" y="15"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2593" y="0"/>
+</item>
+<item historyLabel="system.h" index="1">
+<position info="not_deleted" x="11859" y="15"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2593" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2629" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2856" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2614" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2856" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2994" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2856" y="0"/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="3139" y="0"/>
+</item>
+<item historyLabel="system.h" index="3">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position/>
+</item>
+<item historyLabel="system.h" index="3">
+<position/>
+</item>
+<item historyLabel="hello_ucosii.c" index="0">
+<position info="not_deleted" x="2676" y="0"/>
+</item>
+<item historyLabel="system.h" index="3">
+<position/>
+</item>
+<item active="true" historyLabel="hello_ucosii.c" index="4">
+<position/>
+</item>
+</navigationHistory>
+<stickyState>
+<perspective IMemento.internal.id="org.eclipse.debug.ui.DebugPerspective"/>
+<perspective IMemento.internal.id="com.altera.nj.ui.CPerspective"/>
+</stickyState>
+<input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
+</page>
+<workbenchWindowAdvisor/>
+<actionBarAdvisor/>
+<trimLayout>
+<trimArea IMemento.internal.id="128">
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
+</trimArea>
+<trimArea IMemento.internal.id="1024">
+<trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
+<trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+</trimArea>
+</trimLayout>
+</window>
+<mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="system.h" tooltip="midi_synth_syslib/Debug/system_description/system.h">
+<persistable path="/midi_synth_syslib/Debug/system_description/system.h"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="system.stf" tooltip="midi_synth_syslib/system.stf">
+<persistable path="/midi_synth_syslib/system.stf"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.asm.AsmEditor" name="os_cpu_a.S" tooltip="altera.components/IP Device Drivers/altera/nios2_ip/altera_nios2/UCOSII/src/os_cpu_a.S">
+<persistable path="/altera.components/IP Device Drivers/altera/nios2_ip/altera_nios2/UCOSII/src/os_cpu_a.S"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.cdt.ui.editor.CEditor" name="hello_ucosii.c" tooltip="midi_synth/hello_ucosii.c">
+<persistable path="/midi_synth/hello_ucosii.c"/>
+</file>
+</mruList>
+</workbench>

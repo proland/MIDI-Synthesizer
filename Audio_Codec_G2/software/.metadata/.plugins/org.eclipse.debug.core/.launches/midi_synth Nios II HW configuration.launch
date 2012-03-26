@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.altera.nj.launch.HWLaunch">
+<stringAttribute key="com.altera.nj.launch.HW_UART_LOCAL_DEVICE_NAME" value=""/>
+<stringAttribute key="org.eclipse.cdt.launch.GLOBAL_VARIABLES" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;globalVariableList/&gt;&#10;"/>
+<stringAttribute key="com.altera.nj.launch.REMOTE_PORT" value="50323"/>
+<intAttribute key="com.altera.nj.launch.DEBUG_TARGET" value="1"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/software/midi_synth_syslib/Debug/system_description/generated.gdb"/>
+<stringAttribute key="com.altera.nj.launch.PTF_CPU" value="cpu_0"/>
+<booleanAttribute key="com.altera.nj.launch.STOP_AT_ENTRY" value="false"/>
+<stringAttribute key="com.altera.nj.launch.CABLE_NAME" value="automatic"/>
+<intAttribute key="com.altera.nj.launch.TERMINAL_BY_WHAT" value="1"/>
+<booleanAttribute key="com.altera.nj.launch.RESET_TARGET" value="false"/>
+<stringAttribute key="com.altera.nj.launch.TERMINAL_TO_WHAT" value="stdout"/>
+<booleanAttribute key="com.altera.nj.launch.STOP_AT_ALTMAIN" value="false"/>
+<booleanAttribute key="com.altera.nj.launch.LAUNCH_FS2" value="false"/>
+<stringAttribute key="com.altera.nj.launch.PTF_NAME" value="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="midi_synth"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_REGISTER_GROUPS" value=""/>
+<booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+<booleanAttribute key="org.eclipse.cdt.debug.mi.core.verboseMode" value="false"/>
+<booleanAttribute key="com.altera.nj.launch.VALIDATE_HW_SYSID" value="true"/>
+<booleanAttribute key="com.altera.nj.launch.USE_ALTERA_GENERATED_GDB_SCRIPT" value="true"/>
+<intAttribute key="com.altera.nj.launch.DEVICE_INDEX" value="-1"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.altera.nj.debug.core.NJGDBDebugger"/>
+<stringAttribute key="com.altera.nj.launch.EXTRA_ARGS" value="--instance=0"/>
+<stringAttribute key="com.altera.nj.launch.DOWNLOAD_ARGS" value=""/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/midi_synth.elf"/>
+<stringAttribute key="org.eclipse.cdt.launch.MEMORY_BLOCKS" value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;&#10;&lt;memoryBlockExpressionList/&gt;&#10;"/>
+</launchConfiguration>
