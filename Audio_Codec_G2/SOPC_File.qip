@@ -12,6 +12,14 @@ set_global_assignment -name TCL_FILE [file join $::quartus(ip_rootpath) altera/s
 set_global_assignment -name VHDL_FILE [file join $::quartus(qip_path) altpll_0.vhd]
 # sdram_0
 # uart_0
+# LEDG
+# LEDR
+# note_0
+# note_1
+# note_2
+# note_3
+# note_4
+# note_5
 # null
-set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 005056C0000800000135E543B56E 
+set_global_assignment -name SOPC_BUILDER_SIGNATURE_ID 005056C000080000013650C5AF95 
  

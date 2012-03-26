@@ -21,16 +21,37 @@ end audio_codec_controller;
 
 architecture behavioral of audio_codec_controller is
 	
-	component I2C_Controller is port
+--	component I2C_Controller is port
+--	(
+--		clock50 : in std_logic;
+--		i2c_sclk : out std_logic;
+--		i2c_sdat : in std_logic;
+--		i2c_data : in std_logic_vector(23 downto 0); 
+--		start : in std_logic;
+--		stop : out std_logic;
+--		ack : out std_logic;
+--		rst : in std_logic
+--	);
+	
+--	component I2C_Controller is port
+--	(
+--	CLOCK : in std_logic;
+--	I2C_SCLK : out std_logic;
+-- 	I2C_SDAT : inout std_logic;
+--	I2C_DATA : in std_logic_vector(23 downto 0);
+--	GO : in std_logic;
+--	FINISH : out std_logic;
+--	ACK : out std_logic;
+--	RESET : in std_logic
+--	);
+--	end component;
+	
+	component I2C_AV_Config is port
 	(
-		clock50 : in std_logic;
-		i2c_sclk : out std_logic;
-		i2c_sdat : in std_logic;
-		i2c_data : in std_logic_vector(23 downto 0); 
-		start : in std_logic;
-		stop : out std_logic;
-		ack : out std_logic;
-		rst : in std_logic
+		iCLK : in std_logic;
+		iRST_N : in std_logic;
+		I2C_SCLK : out std_logic;
+		I2C_SDAT	: inout std_logic
 	);
 	end component;
 
@@ -149,6 +170,7 @@ begin
 		-- on p. 38 of DE1 User's manual.  CSB is tied to ground so the 8-bit base address is
 		-- b00110100 = 0x34.  		
 		i2cControllerData <= X"34"&i2cData; 		
+		
 		-- data to be sent to audio code obtained via a MUX
 		-- the select bits for the MUX are obtained by the mini FSM above
 		-- the 16-bit value for each setting can be found
@@ -158,27 +180,28 @@ begin
 			X"0000" when 0, -- dummy data
 			X"001F" when 1, -- Left input volume is maximum
 			X"021F" when 2, -- Right input volume is maximum
-			X"0440" when 3, -- Left output volume is high
-			X"0640" when 4, -- Right output volume is high
+			X"0440" when 3, -- Left output volume is low
+			X"0640" when 4, -- Right output volume is low
 			X"0810" when 5, -- No sidetone, DAC: on, disable mic, line input to ADC: on
 			X"0A07" when 6, -- deemphasis to 48 KHz
 			X"0C00" when 7, -- no power down mode
 			X"0E01" when 8, -- MSB first, left-justified, slave mode
 			X"1002" when 9, -- 384 fs oversampling
 			X"1201" when 10, -- activate
-			X"ABCD" when others; -- should never occur
+			X"0000" when others; -- should never occur
 		
 						
-		
-		controller : i2c_controller port map (clock,scl,sda,i2cControllerData,i2cRun,i2cStop,ack,reset);
+		avconfig	: I2C_AV_Config port map (clock,reset,scl,sda);
+		--controller : i2c_controller port map (clock,scl,sda,i2cControllerData,i2cRun,i2cStop,ack,reset);
 		
 		-- User I/O
 		with currentState select
-			stateOut <= 0 when resetState,
-						   1 when transmit,
-							2 when checkAcknowledge,
-							3 when turnOffi2cControl,
-							4 when incrementMuxSelectBits,
-							5 when stop;							
+			stateOut <=
+				0 when resetState,
+				1 when transmit,
+				2 when checkAcknowledge,
+				3 when turnOffi2cControl,
+				4 when incrementMuxSelectBits,
+				5 when stop;							
 		
 end behavioral;

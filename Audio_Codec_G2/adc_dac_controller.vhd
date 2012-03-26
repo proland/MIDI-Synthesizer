@@ -21,7 +21,32 @@ entity adc_dac_controller is port
 		audioClock : in std_logic; -- 18.432 MHz sample clock
 		bitClock : out std_logic;
 		dacLRSelect : out std_logic;
-		dacData : out std_logic
+		dacData : out std_logic;
+		
+		LEDG : out std_logic_vector(7 downto 0);
+		LEDR : out std_logic_vector(17 downto 0);
+		
+		note_0 : in std_logic_vector(19 downto 0);
+		
+		note_1 : in std_logic_vector(19 downto 0);
+		
+		note_2 : in std_logic_vector(19 downto 0);
+		
+		note_3 : in std_logic_vector(19 downto 0);
+		
+		note_4 : in std_logic_vector(19 downto 0);
+		
+		note_5 : in std_logic_vector(19 downto 0)
+		
+		--note_6 : in std_logic_vector(19 downto 0);
+		
+		--note_7 : in std_logic_vector(19 downto 0)
+		
+--		avs_s0_writedata : IN STD_LOGIC_VECTOR (15 downto 0);
+--		avs_s0_readdata : OUT STD_LOGIC_VECTOR (15 downto 0);
+--		avs_s0_address : IN STD_LOGIC_VECTOR (7 downto 0);
+--		avs_s0_read : IN STD_LOGIC;
+--	   avs_s0_write : IN STD_LOGIC
 );
 end entity;
 
@@ -33,8 +58,8 @@ architecture behavioral of adc_dac_controller is
 	type keyOnType is array (9 downto 0) of integer range 0 to 1;
 	type harmonicArray is array (9 downto 0,5 downto 0) of std_logic_vector(11 downto 0);
 	type HarmonicType is array (9 downto 0) of integer;
-	type noteType is array (9 downto 0) of integer range 0 to 127;
-	type velocityValueType is array (9 downto 0) of std_logic_vector(11 downto 0);
+	type noteType is array (7 downto 0) of integer range 0 to 127;
+	type velocityValueType is array (7 downto 0) of std_logic_vector(11 downto 0);
 
 	signal internalBitClock : std_logic := '0';
 	signal bitClockCounter : integer range 0 to 255;
@@ -139,37 +164,105 @@ architecture behavioral of adc_dac_controller is
 	
 	
 begin
+
+--		
+--	busProcess: process(clk)
+--	begin
+--		if rising_edge(clk) then
+--			if avs_s0_read = '1' then
+--				-- If we are reading the values:
+--				if to_integer(unsigned(avs_s0_address)) < 10 then
+--					-- Reading the note values, lower 8 bits of word.
+--					avs_s0_readdata <= "00000000" & std_logic_vector(to_unsigned(note(to_integer(unsigned(avs_s0_address))),8));
+--				elsif to_integer(unsigned(avs_s0_address)) < 20 then
+--					--- Reading the velocity values, lower 12 bits of the word.
+--					avs_s0_readdata <= "0000" & velocityValue(to_integer(unsigned(avs_s0_address)) - 10);
+--				end if;
+--			elsif avs_s0_write = '1' then
+--				-- If we are writing the values:
+--				if to_integer(unsigned(avs_s0_address)) < 10 then
+--					-- Writing the note values, lower 8 bits of the word.
+--					note(to_integer(unsigned(avs_s0_address))) <= to_integer(unsigned(avs_s0_writedata(7 downto 0)));
+--				elsif to_integer(unsigned(avs_s0_address)) < 20 then
+--					-- Writing the velocity values, lower 12 bits of the word.
+--					velocityValue(to_integer(unsigned(avs_s0_address)) - 10) <= avs_s0_writedata(11 downto 0);
+--				end if;				
+--			end if;
+--		
+--		end if;
+--	end process;
+--	
+--	led : process(clk)
+--	begin
+--		if note(0) = 70 then
+--			--LEDG <= avs_s0_writedata(15 downto 8);
+--			--LEDG <= std_logic_vector(to_unsigned(note(0),8));
+--			LEDG <= "10101010";
+--		else
+--			LEDG <= "00000000";
+--		end if;
+--	end process;
 		
-	--Demo Control: (key 3)	
-	demoProcess: process(noteButton)
-	begin	
-		if rising_edge(noteButton) then
-				velocityValue(0) <= "000000000000";
-				
-				if index = 25 then
-					index <= 0;
-				elsif index = -1 then
-					index <= 0;
-				else
-					index <= index + 1;
-				end if;
-				
-				note(0) <= demo_1(index);
-				velocityValue(0) <= "011111111111";
-		end if;	
-	end process;	
+--	--Demo Control: (key 3)	
+--	demoProcess: process(noteButton)
+--	begin	
+--		if rising_edge(noteButton) then
+--				velocityValue(0) <= "000000000000";
+--				
+--				if index = 25 then
+--					index <= 0;
+--				elsif index = -1 then
+--					index <= 0;
+--				else
+--					index <= index + 1;
+--				end if;
+--				
+--				note(0) <= demo_1(index);
+--				velocityValue(0) <= "011111111111";
+--		end if;	
+--	end process;	
 		
-	--Instrument control: key(1)
-	changeWave: process(instrumentButton)
-	begin	
-		if rising_edge(instrumentButton) then
-			if instrumentType = 2 then
-				instrumentType <= 0;
-			else
-				instrumentType <= instrumentType + 1;
-			end if;
-		end if;	
+	getValues: process(clk)
+	begin
+		if rising_edge(clk) then
+			note(0) <= to_integer(unsigned(note_0(7 downto 0)));
+			velocityValue(0) <= note_0(19 downto 8);
+			note(1) <= to_integer(unsigned(note_1(7 downto 0)));
+			velocityValue(1) <= note_1(19 downto 8);
+			note(2) <= to_integer(unsigned(note_2(7 downto 0)));
+			velocityValue(2) <= note_2(19 downto 8);
+			note(3) <= to_integer(unsigned(note_3(7 downto 0)));
+			velocityValue(3) <= note_3(19 downto 8);
+			note(4) <= to_integer(unsigned(note_4(7 downto 0)));
+			velocityValue(4) <= note_4(19 downto 8);
+			note(5) <= to_integer(unsigned(note_5(7 downto 0)));
+			velocityValue(5) <= note_5(19 downto 8);
+			--note(6) <= to_integer(unsigned(note_6(7 downto 0)));
+			--velocityValue(6) <= note_6(19 downto 8);
+			--note(7) <= to_integer(unsigned(note_7(7 downto 0)));
+			--velocityValue(7) <= note_7(19 downto 8);
+		end if;
 	end process;
+	
+	ledProc : process(clk)
+	begin
+		if rising_edge(clk) then
+			LEDG <= std_logic_vector(to_unsigned(note(0),8));
+			LEDR <= "010101" & velocityValue(0);
+		end if;
+	end process;
+	
+--	--Instrument control: key(1)
+--	changeWave: process(instrumentButton)
+--	begin	
+--		if rising_edge(instrumentButton) then
+--			if instrumentType = 2 then
+--				instrumentType <= 0;
+--			else
+--				instrumentType <= instrumentType + 1;
+--			end if;
+--		end if;	
+--	end process;
 	
 --	--Note control: sw(17) + key(3)
 --	changeNote: process(noteToggle,noteButton)
@@ -219,7 +312,7 @@ begin
 --						note(1) <=0;
 --					else
 --						note(1) <= note(1) -1;
---					end if;
+--					end if; 
 --				end if;
 --				velocityValue(1) <= "011111111111";
 --				keyOn(1) <= 1;
@@ -314,9 +407,6 @@ begin
 	 end process;
 	 
 	--Wave generator
-	
-	GenerateWave:
-		for i in 0 to 5 generate
 			waveGen : waveform_gen port map 
 			(
 			
@@ -324,28 +414,32 @@ begin
 			dataCount,'1','1',
 			
 			--Phase Inputs
-			std_logic_vector(to_unsigned(phase(note(0))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(1))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(2))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(3))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(4))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(5))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(6))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(7))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(8))*(i+1),32)),
-			std_logic_vector(to_unsigned(phase(note(9))*(i+1),32)),
+			std_logic_vector(to_unsigned(phase(note(0)),32)),
+			std_logic_vector(to_unsigned(phase(note(1)),32)),
+			std_logic_vector(to_unsigned(phase(note(2)),32)),
+			std_logic_vector(to_unsigned(phase(note(3)),32)),
+			std_logic_vector(to_unsigned(phase(note(4)),32)),
+			std_logic_vector(to_unsigned(phase(note(5)),32)),
+			"00000000000000000000000000000000",
+			"00000000000000000000000000000000",
+			--std_logic_vector(to_unsigned(phase(note(6)),32)),
+			--std_logic_vector(to_unsigned(phase(note(7)),32)),
+			"00000000000000000000000000000000",
+			"00000000000000000000000000000000",
+			--std_logic_vector(to_unsigned(phase(note(8)),32)),
+			--std_logic_vector(to_unsigned(phase(note(9)),32)),
 			
 			--Sine Outputs
-			sinHarmonic(0,i),
-			sinHarmonic(1,i),
-			sinHarmonic(2,i),
-			sinHarmonic(3,i),
-			sinHarmonic(4,i),
-			sinHarmonic(5,i),
-			sinHarmonic(6,i),
-			sinHarmonic(7,i),
-			sinHarmonic(8,i),
-			sinHarmonic(9,i),
+			sinHarmonic(0,0),
+			sinHarmonic(1,0),
+			sinHarmonic(2,0),
+			sinHarmonic(3,0),
+			sinHarmonic(4,0),
+			sinHarmonic(5,0),
+			sinHarmonic(6,0),
+			sinHarmonic(7,0),
+			sinHarmonic(8,0),
+			sinHarmonic(9,0),
 			
 			--Square outputs
 			temp,
@@ -362,36 +456,34 @@ begin
 			);
 			
 			adsrGen1 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(0),sinHarmonic(0,i),adsrHarmonic(0,i));
+			velocityValue(0),sinHarmonic(0,0),adsrHarmonic(0,0));
 			
 			adsrGen2 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(1),sinHarmonic(1,i),adsrHarmonic(1,i));
+			velocityValue(1),sinHarmonic(1,0),adsrHarmonic(1,0));
 			
 			adsrGen3 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(2),sinHarmonic(2,i),adsrHarmonic(2,i));
+			velocityValue(2),sinHarmonic(2,0),adsrHarmonic(2,0));
 			
 			adsrGen4 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(3),sinHarmonic(3,i),adsrHarmonic(3,i));
+			velocityValue(3),sinHarmonic(3,0),adsrHarmonic(3,0));
 			
 			adsrGen5 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(4),sinHarmonic(4,i),adsrHarmonic(4,i));
+			velocityValue(4),sinHarmonic(4,0),adsrHarmonic(4,0));
 			
 			adsrGen6 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(5),sinHarmonic(5,i),adsrHarmonic(5,i));
+			velocityValue(5),sinHarmonic(5,0),adsrHarmonic(5,0));
 			
-			adsrGen7 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(6),sinHarmonic(6,i),adsrHarmonic(6,i));
+			--adsrGen7 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
+			--velocityValue(6),sinHarmonic(6,0),adsrHarmonic(6,0));
 			
-			adsrGen8 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(7),sinHarmonic(7,i),adsrHarmonic(7,i));
+			--adsrGen8 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
+			--velocityValue(7),sinHarmonic(7,0),adsrHarmonic(7,0));
 			
-			adsrGen9 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(8),sinHarmonic(8,i),adsrHarmonic(8,i));
+			--adsrGen9 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
+			--velocityValue(8),sinHarmonic(8,0),adsrHarmonic(8,0));
 			
-			adsrGen10 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
-			velocityValue(9),sinHarmonic(9,i),adsrHarmonic(9,i));
-			
-		end generate;
+			--adsrGen10 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",
+			--velocityValue(9),sinHarmonic(9,0),adsrHarmonic(9,0));
 	
 	totalKeys <= 1;
 	
@@ -407,28 +499,28 @@ begin
 	to_integer(signed(adsrHarmonic(8,0))) + 
 	to_integer(signed(adsrHarmonic(9,0))) / totalKeys;
 	
-	SH2 <= to_integer(signed(adsrHarmonic(0,1)));
-	SH3 <= to_integer(signed(adsrHarmonic(0,2)));
-	SH4 <= to_integer(signed(adsrHarmonic(0,3)));
-	SH5 <= to_integer(signed(adsrHarmonic(0,4)));
-	SH6 <= to_integer(signed(adsrHarmonic(0,5)));
+--	SH2 <= to_integer(signed(adsrHarmonic(0,1)));
+--	SH3 <= to_integer(signed(adsrHarmonic(0,2)));
+--	SH4 <= to_integer(signed(adsrHarmonic(0,3)));
+--	SH5 <= to_integer(signed(adsrHarmonic(0,4)));
+--	SH6 <= to_integer(signed(adsrHarmonic(0,5)));
 	
-	--dacData output
-	process(instrumentType)
-	begin
-		--Piano
-		if instrumentType = 0 then		
-			waveFromGenerator <= SH1;
-		
-		--Bassoon
-		elsif instrumentType = 1 then
-			waveFromGenerator <= (SH1*32 + SH2*128 + SH3*32)/128;
-		
-		--Saxaphone
-		elsif instrumentType = 2 then
-			waveFromGenerator <= (SH1*128 + SH2*64)/128;
-			
-		end if;
-	 end process;
-
+--	--dacData output
+--	process(instrumentType)
+--	begin
+--		--Piano
+--		if instrumentType = 0 then		
+--			waveFromGenerator <= SH1;
+--		
+--		--Bassoon
+--		elsif instrumentType = 1 then
+--			waveFromGenerator <= (SH1*32 + SH2*128 + SH3*32)/128;
+--		
+--		--Saxaphone
+--		elsif instrumentType = 2 then
+--			waveFromGenerator <= (SH1*128 + SH2*64)/128;
+--			
+--		end if;
+--	 end process;
+waveFromGenerator <= SH1;
 end behavioral;

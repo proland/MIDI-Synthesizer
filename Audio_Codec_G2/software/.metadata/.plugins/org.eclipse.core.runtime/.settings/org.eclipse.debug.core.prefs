@@ -1,0 +1,3 @@
+#Mon Mar 12 16:21:18 MDT 2012
+prefWatchExpressions=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?>\n<watchExpressions>\n<expression enabled\="true" text\="notes[1]"/>\n<expression enabled\="true" text\="notes[2]"/>\n<expression enabled\="true" text\="notes[3]"/>\n<expression enabled\="true" text\="notes[4]"/>\n<expression enabled\="true" text\="notes[5]"/>\n<expression enabled\="true" text\="notes[6]"/>\n<expression enabled\="true" text\="notes[7]"/>\n<expression enabled\="true" text\="notes[8]"/>\n<expression enabled\="true" text\="notes[9]"/>\n<expression enabled\="true" text\="velocities[0]"/>\n<expression enabled\="true" text\="notes[0]"/>\n</watchExpressions>\n
+eclipse.preferences.version=1

@@ -1,5 +1,5 @@
 TimeQuest Timing Analyzer report for MidiSynth
-Wed Mar  7 16:43:14 2012
+Mon Mar 26 15:35:13 2012
 Quartus II Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Web Edition
 
 
@@ -71,15 +71,21 @@ applicable agreement for further details.
 +--------------------+-----------------------------------------------------------------+
 
 
-Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
-+-------------------------------------+
-; Parallel Compilation                ;
-+----------------------------+--------+
-; Processors                 ; Number ;
-+----------------------------+--------+
-; Number detected on machine ; 4      ;
-; Maximum allowed            ; 1      ;
-+----------------------------+--------+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 4           ;
+; Maximum allowed            ; 4           ;
+;                            ;             ;
+; Average used               ; 2.71        ;
+; Maximum used               ; 4           ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     1 processor            ; 100.0%      ;
+;     2-4 processors         ;  25.0%      ;
++----------------------------+-------------+
 
 
 +---------------------------------------------------+
@@ -87,7 +93,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------+--------+--------------------------+
 ; SDC File Path ; Status ; Read at                  ;
 +---------------+--------+--------------------------+
-; cpu_0.sdc     ; OK     ; Wed Mar  7 16:43:10 2012 ;
+; cpu_0.sdc     ; OK     ; Mon Mar 26 15:35:10 2012 ;
 +---------------+--------+--------------------------+
 
 
@@ -148,26 +154,24 @@ No paths to report.
 +--------+--------------+----------------+-----------+---------------------+------------+---------------------+
 
 
-+----------------------------------------------------------+
-; Propagation Delay                                        ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.557 ; 9.557 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Propagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;    ;    ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;    ;    ; 0.868 ;
++------------+-------------+-------+----+----+-------+
 
 
-+----------------------------------------------------------+
-; Minimum Propagation Delay                                ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.557 ; 9.557 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Minimum Propagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;    ;    ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;    ;    ; 0.868 ;
++------------+-------------+-------+----+----+-------+
 
 
 ----------------------------
@@ -212,26 +216,24 @@ No paths to report.
 +--------+--------------+----------------+-----------+---------------------+------------+---------------------+
 
 
-+----------------------------------------------------------+
-; Propagation Delay                                        ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.811 ; 4.811 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Propagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 1.463 ;    ;    ; 1.463 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.154 ;    ;    ; 0.154 ;
++------------+-------------+-------+----+----+-------+
 
 
-+----------------------------------------------------------+
-; Minimum Propagation Delay                                ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.811 ; 4.811 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Minimum Propagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 1.463 ;    ;    ; 1.463 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.154 ;    ;    ; 0.154 ;
++------------+-------------+-------+----+----+-------+
 
 
 +--------------------------------------------------------------------------------+
@@ -246,26 +248,24 @@ No paths to report.
 +----------------------+-------+------+----------+---------+---------------------+
 
 
-+----------------------------------------------------------+
-; Progagation Delay                                        ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 2.917 ;       ;       ; 2.917 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.868 ;       ;       ; 0.868 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 9.557 ; 9.557 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Progagation Delay                                  ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 2.917 ;    ;    ; 2.917 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.868 ;    ;    ; 0.868 ;
++------------+-------------+-------+----+----+-------+
 
 
-+----------------------------------------------------------+
-; Minimum Progagation Delay                                ;
-+------------+-------------+-------+-------+-------+-------+
-; Input Port ; Output Port ; RR    ; RF    ; FR    ; FF    ;
-+------------+-------------+-------+-------+-------+-------+
-; CLOCK_27   ; AUD_XCK     ; 1.463 ;       ;       ; 1.463 ;
-; CLOCK_50   ; DRAM_CLK    ; 0.154 ;       ;       ; 0.154 ;
-; CLOCK_50   ; I2C_SCLK    ;       ; 4.811 ; 4.811 ;       ;
-+------------+-------------+-------+-------+-------+-------+
++----------------------------------------------------+
+; Minimum Progagation Delay                          ;
++------------+-------------+-------+----+----+-------+
+; Input Port ; Output Port ; RR    ; RF ; FR ; FF    ;
++------------+-------------+-------+----+----+-------+
+; CLOCK_27   ; AUD_XCK     ; 1.463 ;    ;    ; 1.463 ;
+; CLOCK_50   ; DRAM_CLK    ; 0.154 ;    ;    ; 0.154 ;
++------------+-------------+-------+----+----+-------+
 
 
 -------------------
@@ -292,11 +292,11 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 ; Property                        ; Setup ; Hold ;
 +---------------------------------+-------+------+
 ; Illegal Clocks                  ; 0     ; 0    ;
-; Unconstrained Clocks            ; 9     ; 9    ;
-; Unconstrained Input Ports       ; 28    ; 28   ;
-; Unconstrained Input Port Paths  ; 115   ; 115  ;
-; Unconstrained Output Ports      ; 61    ; 61   ;
-; Unconstrained Output Port Paths ; 173   ; 173  ;
+; Unconstrained Clocks            ; 6     ; 6    ;
+; Unconstrained Input Ports       ; 29    ; 29   ;
+; Unconstrained Input Port Paths  ; 152   ; 152  ;
+; Unconstrained Output Ports      ; 60    ; 60   ;
+; Unconstrained Output Port Paths ; 123   ; 123  ;
 +---------------------------------+-------+------+
 
 
@@ -306,28 +306,12 @@ No dedicated SERDES Receiver circuitry present in device or used in design
 Info: *******************************************************************
 Info: Running Quartus II TimeQuest Timing Analyzer
     Info: Version 10.1 Build 197 01/19/2011 Service Pack 1 SJ Web Edition
-    Info: Processing started: Wed Mar  7 16:43:09 2012
+    Info: Processing started: Mon Mar 26 15:35:09 2012
 Info: Command: quartus_sta MidiSynth -c MidiSynth
 Info: qsta_default_script.tcl version: #4
+Info: Parallel compilation is enabled and will use 4 of the 4 processors detected
 Info: Low junction temperature is 0 degrees C
 Info: High junction temperature is 85 degrees C
-Warning: Timing Analysis is analyzing one or more combinational loops as latches
-    Warning: Node "adcDacController|waveFromGenerator[15]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[11]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[14]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[10]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[3]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[7]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[5]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[13]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[12]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[8]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[6]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[2]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[1]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[9]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[4]|combout" is a latch
-    Warning: Node "adcDacController|waveFromGenerator[0]|combout" is a latch
 Info: Evaluating HDL-embedded SDC commands
     Info: Entity alt_jtag_atlantic
         Info: set_false_path -from [get_registers {*|alt_jtag_atlantic:*|jupdate}] -to [get_registers {*|alt_jtag_atlantic:*|jupdate1*}] 
@@ -383,14 +367,11 @@ Info: Evaluating HDL-embedded SDC commands
         Info: set_clock_groups -asynchronous -group {altera_reserved_tck}
 Info: Reading SDC File: 'cpu_0.sdc'
 Warning: Node: CLOCK_50 was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: audio_codec_controller:audioCodecController|I2C_AV_Config:avconfig|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|internalBitClock was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: CLOCK_27 was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: audio_codec_controller:audioCodecController|currentState.incrementMuxSelectBits was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|dataCount was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[3] was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: adc_dac_controller:adcDacController|instrumentType[0] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
 Warning: PLL cross checking found inconsistent PLL clock settings:
     Warning: Node: mainSystem|the_altpll_0|sd1|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
     Warning: Node: audioPllClockGen|altpll_component|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 37.037
@@ -407,7 +388,7 @@ Info: Worst-case minimum pulse width slack is 97.778
 Info: The selected device family is not supported by the report_metastability command.
 Info: Analyzing Fast Model
 Info: Started post-fitting delay annotation
-Warning: Found 122 output pins without output pin load capacitance assignment
+Warning: Found 148 output pins without output pin load capacitance assignment
     Info: Pin "GPIO_1[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "GPIO_1[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "GPIO_1[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -496,6 +477,32 @@ Warning: Found 122 output pins without output pin load capacitance assignment
     Info: Pin "DRAM_WE_N" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "DRAM_UDQM" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "DRAM_LDQM" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[6]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDG[7]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[0]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[1]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[2]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[3]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[4]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[5]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[6]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[7]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[8]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[9]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[10]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[11]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[12]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[13]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[14]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[15]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[16]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
+    Info: Pin "LEDR[17]" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "AUD_DACLRCK" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "AUD_DACDAT" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
     Info: Pin "AUD_XCK" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
@@ -532,14 +539,11 @@ Warning: Found 122 output pins without output pin load capacitance assignment
     Info: Pin "UART_TXD" has no specified output pin load capacitance -- assuming default load capacitance of 0 pF for timing analysis
 Info: Delay annotation completed successfully
 Warning: Node: CLOCK_50 was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: audio_codec_controller:audioCodecController|I2C_AV_Config:avconfig|mI2C_CTRL_CLK was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|internalBitClock was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: CLOCK_27 was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: audio_codec_controller:audioCodecController|currentState.incrementMuxSelectBits was determined to be a clock but was found without an associated clock assignment.
 Warning: Node: adc_dac_controller:adcDacController|dataCount was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[3] was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: KEY[1] was determined to be a clock but was found without an associated clock assignment.
-Warning: Node: adc_dac_controller:adcDacController|instrumentType[0] was determined to be a clock but was found without an associated clock assignment.
+Warning: Node: audio_codec_controller:audioCodecController|i2cClock20KHz was determined to be a clock but was found without an associated clock assignment.
 Warning: PLL cross checking found inconsistent PLL clock settings:
     Warning: Node: mainSystem|the_altpll_0|sd1|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 20.000
     Warning: Node: audioPllClockGen|altpll_component|pll|clk[0] was found missing 1 generated clock that corresponds to a base clock with a period of: 37.037
@@ -554,10 +558,10 @@ Info: Worst-case minimum pulse width slack is 97.778
 Info: The selected device family is not supported by the report_metastability command.
 Info: Design is not fully constrained for setup requirements
 Info: Design is not fully constrained for hold requirements
-Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 42 warnings
-    Info: Peak virtual memory: 272 megabytes
-    Info: Processing ended: Wed Mar  7 16:43:14 2012
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+Info: Quartus II TimeQuest Timing Analyzer was successful. 0 errors, 19 warnings
+    Info: Peak virtual memory: 320 megabytes
+    Info: Processing ended: Mon Mar 26 15:35:13 2012
+    Info: Elapsed time: 00:00:04
+    Info: Total CPU time (on all processors): 00:00:06
 
 

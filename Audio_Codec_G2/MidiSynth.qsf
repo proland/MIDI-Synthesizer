@@ -47,7 +47,7 @@ set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_NETLIST_TYPE POST_FIT -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_location_assignment PIN_N25 -to SW[0]
@@ -482,16 +482,22 @@ set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
 set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
 set_location_assignment PIN_D13 -to CLOCK_27[0]
 set_location_assignment PIN_D13 -to CLOCK_27
+set_global_assignment -name ENABLE_SIGNALTAP ON
+set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name VERILOG_FILE I2C_AV_Config.v
+set_global_assignment -name VERILOG_FILE i2c_controller.v
+set_global_assignment -name VHDL_FILE note_5.vhd
+set_global_assignment -name VHDL_FILE note_4.vhd
+set_global_assignment -name VHDL_FILE note_3.vhd
+set_global_assignment -name VHDL_FILE note_2.vhd
+set_global_assignment -name VHDL_FILE note_1.vhd
+set_global_assignment -name VHDL_FILE note_0.vhd
+set_global_assignment -name VHDL_FILE LEDR.vhd
+set_global_assignment -name VHDL_FILE LEDG.vhd
 set_global_assignment -name VHDL_FILE adsr.vhd
-set_global_assignment -name VERILOG_FILE uarttx.v
-set_global_assignment -name VERILOG_FILE uartrx.v
-set_global_assignment -name VERILOG_FILE MIDIHEX.V
-set_global_assignment -name VERILOG_FILE kcpsm3.v
-set_global_assignment -name VERILOG_FILE MIDItoHexTTY.v
 set_global_assignment -name VHDL_FILE uart_0.vhd
 set_global_assignment -name VHDL_FILE sincos_lut.vhd
 set_global_assignment -name VHDL_FILE waveform_gen.vhd
-set_global_assignment -name VHDL_FILE i2c_controller.vhdl
 set_global_assignment -name VHDL_FILE uC_timer.vhd
 set_global_assignment -name VHDL_FILE sysid.vhd
 set_global_assignment -name SOPC_FILE SOPC_Files.sopc
@@ -514,4 +520,5 @@ set_global_assignment -name VHDL_FILE audioPLL.vhd
 set_global_assignment -name VHDL_FILE audio_codec_controller.vhd
 set_global_assignment -name VHDL_FILE adc_dac_controller.vhd
 set_global_assignment -name QIP_FILE SOPC_File.qip
+set_global_assignment -name SIGNALTAP_FILE stp1.stp
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
