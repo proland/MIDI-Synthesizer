@@ -2,7 +2,7 @@
 --  Ver  :| Original Author   	    :| Additional Author :| 
 --  V1.0 :| Bharathwaj Muthuswamy   :| Eric Lunty        :| 
 -----------------------------------------------------------
---	  Minor code tweaks + glue code added            :|
+--	  Minor code tweaks + glue code added            		:|
 -----------------------------------------------------------
 
 -- This design is a VHDL interface to the audio codec on the DE2 board
@@ -94,26 +94,24 @@ architecture topLevel of DE1_Audio_AdcDac is
 						  signal out_port_from_the_note_3 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_4 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_5 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0)
-						  --signal out_port_from_the_note_6 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
-						  --signal out_port_from_the_note_7 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0)
-
 	);
 	end component SOPC_File;
 
-	component audio_codec_controller is port
+	component I2C_AV_Config is port
 	(
-		reset : in std_logic;
-		clock : in std_logic;
-		scl : out std_logic;
-		sda : inout std_logic;
-		stateOut : out integer range 0 to 7);
+			iCLK : in std_logic;
+			iRST_N : in std_logic;
+			I2C_SCLK : out std_logic;
+			I2C_SDAT :	inout std_logic
+	);
 	end component;
 	
 	component delayCounter is port 
 	(
 		reset : in std_logic;
 		clock : in std_logic;
-		resetAdc : out std_logic);
+		resetAdc : out std_logic
+	);
 	end component;
 	
 	
@@ -122,7 +120,8 @@ architecture topLevel of DE1_Audio_AdcDac is
 	(
 		areset : IN STD_LOGIC := '0';
 		inclk0 : IN STD_LOGIC := '0';
-		c0 : OUT STD_LOGIC );
+		c0 : OUT STD_LOGIC 
+	);
 	END component;
 	
 	component audioPLL IS
@@ -130,32 +129,30 @@ architecture topLevel of DE1_Audio_AdcDac is
 	(
 		areset		: IN STD_LOGIC  := '0';
 		inclk0		: IN STD_LOGIC  := '0';
-		c0		: OUT STD_LOGIC);
+		c0		: OUT STD_LOGIC
+	);
 	END component;
 
 	component adc_dac_controller is port 
 	(
 		clk : in std_logic;
-		noteButton : in std_logic;
-		noteToggle : in std_logic;
-		noteButton2 : in std_logic;
-		noteToggle2 : in std_logic;
-		instrumentButton : in std_logic;
+		demoButton : in std_logic;
+		waveButton : in std_logic;
 		reset : in std_logic;
-		audioClock : in std_logic; -- 18.432 MHz sample clock
+		audioClock : in std_logic;
 		bitClock : out std_logic;
 		dacLRSelect : out std_logic;
 		dacData : out std_logic;
+		
 		LEDG : out std_logic_vector(7 downto 0);
 		LEDR : out std_logic_vector(17 downto 0);
+		
 		note_0 : in std_logic_vector(19 downto 0);
 		note_1 : in std_logic_vector(19 downto 0);
 		note_2 : in std_logic_vector(19 downto 0);
 		note_3 : in std_logic_vector(19 downto 0);
 		note_4 : in std_logic_vector(19 downto 0);
 		note_5 : in std_logic_vector(19 downto 0)
-		--note_6 : in std_logic_vector(19 downto 0);
-		--note_7 : in std_logic_vector(19 downto 0)
 	);
 	end component;
 	
@@ -178,8 +175,6 @@ architecture topLevel of DE1_Audio_AdcDac is
 		  signal note3 : STD_LOGIC_VECTOR(19 downto 0);
 		  signal note4 : STD_LOGIC_VECTOR(19 downto 0);
 		  signal note5 : STD_LOGIC_VECTOR(19 downto 0);
-		  --signal note6 : STD_LOGIC_VECTOR(19 downto 0);
-		  --signal note7 : STD_LOGIC_VECTOR(19 downto 0);
 	
 begin
 
@@ -225,19 +220,15 @@ begin
 	  note3,
 	  note4,
 	  note5
-	  --note6,
-	  --note7
 	);
 						  
-						  
+	--Set up all the audio codec data					  
+	avconfig	: I2C_AV_Config port map (CLOCK_50,SW(0),i2cClock,I2C_SDAT);
 	
-	audioCodecController : audio_codec_controller port map (SW(0),CLOCK_50,i2cClock,I2C_SDAT,stateOut);
-	
-	-- we only start the audio controller below long (40 ms) after we reset the system
-	-- the reason is that transmitting all the i2c data takes at least 19 ms (20 KHz clock)
+	--Takes a while to set up the audioc codec, so we created a delay before we run it
 	adcDacControllerStartDelay : delayCounter port map (SW(0),CLOCK_50,resetAdcDac);
 
-	-- we will use a PLL to generate the necessary 18.432 MHz Audio Control clock
+	--Used to created the 18.432 MHz Audio Control clock
 	audioPllClockGen : audioPLL port map (not resetAdcDac,CLOCK_27,audioClock);
 	
 	adcDacController : adc_dac_controller port map 
@@ -247,10 +238,7 @@ begin
 
 		--Buttons/Switches
 		Key(3),
-		SW(17),
 		Key(2),
-		SW(16),
-		Key(1),
 
 		--Signals
 		resetAdcDac,
@@ -280,18 +268,6 @@ begin
 	
 	--Output assignments
 	AUD_DACDAT <= dacDat;
-	
-	HEX3 <= "1111111";
-	HEX2 <= "1111111";
-	HEX1 <= "1111111";
-	with stateOut select
-		HEX0 <= "1000000" when 0, -- resetState
-			"1111100" when 1, -- transmit
-			"0100100" when 2, -- checkAcknowledge
-			"0110000" when 3, -- turnOffi2cControl
-			"0011001" when 4, -- incrementMuxSelectBits
-			"0010010" when 5, -- stop
-			"1111111" when others; -- should not occur
 		
 end topLevel;
 

@@ -484,6 +484,7 @@ set_location_assignment PIN_D13 -to CLOCK_27[0]
 set_location_assignment PIN_D13 -to CLOCK_27
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name VHDL_FILE sin_lut.vhd
 set_global_assignment -name VERILOG_FILE I2C_AV_Config.v
 set_global_assignment -name VERILOG_FILE i2c_controller.v
 set_global_assignment -name VHDL_FILE note_5.vhd
@@ -496,7 +497,6 @@ set_global_assignment -name VHDL_FILE LEDR.vhd
 set_global_assignment -name VHDL_FILE LEDG.vhd
 set_global_assignment -name VHDL_FILE adsr.vhd
 set_global_assignment -name VHDL_FILE uart_0.vhd
-set_global_assignment -name VHDL_FILE sincos_lut.vhd
 set_global_assignment -name VHDL_FILE waveform_gen.vhd
 set_global_assignment -name VHDL_FILE uC_timer.vhd
 set_global_assignment -name VHDL_FILE sysid.vhd
@@ -517,7 +517,6 @@ set_global_assignment -name VHDL_FILE cpu_0_jtag_debug_module_sysclk.vhd
 set_global_assignment -name VHDL_FILE cpu_0.vhd
 set_global_assignment -name VHDL_FILE char_lcd.vhd
 set_global_assignment -name VHDL_FILE audioPLL.vhd
-set_global_assignment -name VHDL_FILE audio_codec_controller.vhd
 set_global_assignment -name VHDL_FILE adc_dac_controller.vhd
 set_global_assignment -name QIP_FILE SOPC_File.qip
 set_global_assignment -name SIGNALTAP_FILE stp1.stp

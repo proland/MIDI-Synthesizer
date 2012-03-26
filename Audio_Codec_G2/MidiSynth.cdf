@@ -4,10 +4,10 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EPCS16) Path("/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/") File("MidiSynth.pof") MfrSpec(OpMask(1) Child_OpMask(1 1));
+		Device PartName(EP2C35F672) Path("/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/") File("MidiSynth.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
 AlteraBegin;
-	ChainType(asc);
+	ChainType(JTAG);
 AlteraEnd;
