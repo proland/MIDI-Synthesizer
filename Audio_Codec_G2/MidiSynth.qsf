@@ -484,6 +484,8 @@ set_location_assignment PIN_D13 -to CLOCK_27[0]
 set_location_assignment PIN_D13 -to CLOCK_27
 set_global_assignment -name ENABLE_SIGNALTAP ON
 set_global_assignment -name USE_SIGNALTAP_FILE stp1.stp
+set_global_assignment -name VHDL_FILE effects_core.vhd
+set_global_assignment -name VHDL_FILE sin_lut_effect.vhd
 set_global_assignment -name VHDL_FILE sin_lut.vhd
 set_global_assignment -name VERILOG_FILE I2C_AV_Config.v
 set_global_assignment -name VERILOG_FILE i2c_controller.v

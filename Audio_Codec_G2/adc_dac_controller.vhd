@@ -14,6 +14,7 @@ entity adc_dac_controller is port
 		clk : in std_logic;
 		demoButton : in std_logic;
 		waveButton : in std_logic;
+		effectButton : in std_logic;
 		reset : in std_logic;
 		audioClock : in std_logic;
 		bitClock : out std_logic;
@@ -65,7 +66,10 @@ architecture behavioral of adc_dac_controller is
 	signal sawWave	: waveArray;
 	signal waveform : waveArray;
 	signal waveType: integer range 0 to 2 :=0;
-
+	
+	-- Effect signals
+	signal tremeloEffect : std_logic_vector(11 downto 0);
+	signal tremeloOn : integer range 0 to 1 :=0;
 	
 	-- Velocity and note vectors
 	signal velocityValue: velocityValueType;
@@ -87,9 +91,25 @@ architecture behavioral of adc_dac_controller is
 	64,62,60,62,64,64,64,64,62,62,64,62,60
 	);
 
+component effects_core is port 
+(
+  -- system signals
+  clk         : in  std_logic;
+  reset       : in  std_logic;
+  
+  -- clock-enable
+  en          : in  std_logic;
+  
+  -- NCO frequency control
+  phase_inc   : in  std_logic_vector(31 downto 0);
+  
+  -- Output waveform
+  wave_out     : out std_logic_vector(11 downto 0)
+);
+end component;
+	
 component waveform_gen is port 
 (
-
   -- System signals
   clk         : in  std_logic;
   reset       : in  std_logic;
@@ -145,6 +165,18 @@ end component;
 	
 	
 begin	
+	-- Turn tremelo on/off
+	effectToggle : process(effectButton)
+	begin
+			if rising_edge(effectButton) then
+				if tremeloOn = 1 then
+					tremeloOn <= 0;
+				else
+					tremeloOn <= 1;
+				end if;
+			end if;
+	end process;
+
 	-- Waveform control (key 2)
 	changeWave: process(waveButton)
 	begin	
@@ -283,6 +315,9 @@ begin
 		end if;
 	 end process;
 	 
+	-- Tremelo effect generator
+	effectGen : effects_core port map (dataCount,'1','1',std_logic_vector(to_unsigned(phase(0),32)),tremeloEffect);
+	
 	-- Wave generator
 	waveGen : waveform_gen port map 
 			(
@@ -356,8 +391,18 @@ begin
 	adsrGen4 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",velocityValue(4),waveform(4),adsrWave(4));
 	adsrGen5 : adsr port map ('0',clk,"00000010","01111111","011111111111","11111111",velocityValue(5),waveform(5),adsrWave(5));
 	
-	waveFromGenerator <= 	to_integer(signed(adsrWave(0))) + to_integer(signed(adsrWave(1))) + 
-				to_integer(signed(adsrWave(2))) + to_integer(signed(adsrWave(3))) + 
-				to_integer(signed(adsrWave(4))) + to_integer(signed(adsrWave(5)));
-
+--	waveFromGenerator <= 	to_integer(signed(adsrWave(0))) + to_integer(signed(adsrWave(1))) + 
+--				to_integer(signed(adsrWave(2))) + to_integer(signed(adsrWave(3))) + 
+--				to_integer(signed(adsrWave(4))) + to_integer(signed(adsrWave(5)));
+	
+	-- Turn on the tremelo when told to do so
+	process(tremeloOn)
+	begin
+		if tremeloOn = 1 then
+			waveFromGenerator <=  (to_integer(signed(adsrWave(0))) * (to_integer(unsigned(tremeloEffect)))) / 4095;
+		else
+			waveFromGenerator <=  to_integer(signed(adsrWave(0)));
+		end if;
+	end process;
+	
 end behavioral;

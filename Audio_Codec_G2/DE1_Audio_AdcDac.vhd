@@ -114,16 +114,6 @@ architecture topLevel of DE1_Audio_AdcDac is
 	);
 	end component;
 	
-	
-	component clockBuffer IS
-	PORT
-	(
-		areset : IN STD_LOGIC := '0';
-		inclk0 : IN STD_LOGIC := '0';
-		c0 : OUT STD_LOGIC 
-	);
-	END component;
-	
 	component audioPLL IS
 	PORT
 	(
@@ -138,6 +128,7 @@ architecture topLevel of DE1_Audio_AdcDac is
 		clk : in std_logic;
 		demoButton : in std_logic;
 		waveButton : in std_logic;
+		effectButton : in std_logic;
 		reset : in std_logic;
 		audioClock : in std_logic;
 		bitClock : out std_logic;
@@ -239,6 +230,7 @@ begin
 		--Buttons/Switches
 		Key(3),
 		Key(2),
+		Key(1),
 
 		--Signals
 		resetAdcDac,

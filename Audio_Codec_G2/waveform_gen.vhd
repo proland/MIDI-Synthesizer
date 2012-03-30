@@ -20,7 +20,7 @@ port (
   
   -- clock-enable
   en          : in  std_logic;
-  
+
   -- NCO frequency control
   phase_inc1   : in  std_logic_vector(31 downto 0);
   phase_inc2   : in  std_logic_vector(31 downto 0);
