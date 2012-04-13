@@ -33,8 +33,21 @@
    {
       datum baseAddress
       {
-         value = "16797960";
+         value = "25186552";
          type = "long";
+      }
+   }
+   element cfi_flash_0
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{}";
+         type = "String";
       }
    }
    element char_lcd
@@ -62,7 +75,7 @@
    {
       datum baseAddress
       {
-         value = "16797760";
+         value = "25186368";
          type = "long";
       }
    }
@@ -70,7 +83,7 @@
    {
       datum baseAddress
       {
-         value = "16797952";
+         value = "25186544";
          type = "long";
       }
    }
@@ -83,7 +96,7 @@
       }
       datum megawizard_uipreferences
       {
-         value = "{output_language=VHDL, output_directory=/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth}";
+         value = "{}";
          type = "String";
       }
    }
@@ -91,7 +104,7 @@
    {
       datum baseAddress
       {
-         value = "16795648";
+         value = "25184256";
          type = "long";
       }
    }
@@ -163,47 +176,7 @@
    {
       datum baseAddress
       {
-         value = "16797776";
-         type = "long";
-      }
-   }
-   element uart_0.s1
-   {
-      datum baseAddress
-      {
-         value = "16797728";
-         type = "long";
-      }
-   }
-   element note_1.s1
-   {
-      datum baseAddress
-      {
-         value = "16797840";
-         type = "long";
-      }
-   }
-   element uC_timer.s1
-   {
-      datum baseAddress
-      {
-         value = "16797696";
-         type = "long";
-      }
-   }
-   element note_0.s1
-   {
-      datum baseAddress
-      {
-         value = "16797824";
-         type = "long";
-      }
-   }
-   element LEDG.s1
-   {
-      datum baseAddress
-      {
-         value = "16797792";
+         value = "25186384";
          type = "long";
       }
    }
@@ -211,7 +184,31 @@
    {
       datum baseAddress
       {
-         value = "16797872";
+         value = "25186480";
+         type = "long";
+      }
+   }
+   element uart_0.s1
+   {
+      datum baseAddress
+      {
+         value = "25186336";
+         type = "long";
+      }
+   }
+   element uC_timer.s1
+   {
+      datum baseAddress
+      {
+         value = "25186304";
+         type = "long";
+      }
+   }
+   element note_4.s1
+   {
+      datum baseAddress
+      {
+         value = "25186496";
          type = "long";
       }
    }
@@ -219,15 +216,15 @@
    {
       datum baseAddress
       {
-         value = "16797904";
+         value = "25186512";
          type = "long";
       }
    }
-   element LEDR.s1
+   element cfi_flash_0.s1
    {
       datum baseAddress
       {
-         value = "16797808";
+         value = "20971520";
          type = "long";
       }
    }
@@ -235,7 +232,39 @@
    {
       datum baseAddress
       {
-         value = "16797856";
+         value = "25186464";
+         type = "long";
+      }
+   }
+   element note_0.s1
+   {
+      datum baseAddress
+      {
+         value = "25186432";
+         type = "long";
+      }
+   }
+   element switches.s1
+   {
+      datum baseAddress
+      {
+         value = "25186528";
+         type = "long";
+      }
+   }
+   element onchip_memory2_0.s1
+   {
+      datum baseAddress
+      {
+         value = "25174016";
+         type = "long";
+      }
+   }
+   element LEDR.s1
+   {
+      datum baseAddress
+      {
+         value = "25186416";
          type = "long";
       }
    }
@@ -247,19 +276,19 @@
          type = "long";
       }
    }
-   element note_4.s1
+   element LEDG.s1
    {
       datum baseAddress
       {
-         value = "16797888";
+         value = "25186400";
          type = "long";
       }
    }
-   element onchip_memory2_0.s1
+   element note_1.s1
    {
       datum baseAddress
       {
-         value = "16785408";
+         value = "25186448";
          type = "long";
       }
    }
@@ -276,12 +305,33 @@
          type = "String";
       }
    }
+   element switches
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
    element sysid
    {
       datum _sortIndex
       {
          value = "3";
          type = "int";
+      }
+   }
+   element tri_state_bridge_0
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+      datum megawizard_uipreferences
+      {
+         value = "{output_language=VHDL, output_directory=/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth}";
+         type = "String";
       }
    }
    element uC_timer
@@ -312,8 +362,8 @@
  <parameter name="maxAdditionalLatency" value="0" />
  <parameter name="projectName" value="MidiSynth.qpf" />
  <parameter name="sopcBorderPoints" value="true" />
- <parameter name="systemHash" value="-9171644953" />
- <parameter name="timeStamp" value="1332794989573" />
+ <parameter name="systemHash" value="-8147051859" />
+ <parameter name="timeStamp" value="1334177553009" />
  <module kind="clock_source" version="10.1" enabled="1" name="clk_0">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
@@ -368,7 +418,7 @@
   <parameter name="setting_activateModelChecker" value="false" />
   <parameter name="setting_HDLSimCachesCleared" value="true" />
   <parameter name="setting_HBreakTest" value="false" />
-  <parameter name="resetSlave" value="onchip_memory2_0.s1" />
+  <parameter name="resetSlave" value="cfi_flash_0.s1" />
   <parameter name="resetOffset" value="0" />
   <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
   <parameter name="muldiv_divider" value="false" />
@@ -388,8 +438,8 @@
   <parameter name="mmu_TLBMissExcSlave" value="" />
   <parameter name="mmu_TLBMissExcOffset" value="0" />
   <parameter name="manuallyAssignCpuID" value="false" />
-  <parameter name="internalIrqMaskSystemInfo" value="7" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1002000' end='0x1004000' /><slave name='cpu_0.jtag_debug_module' start='0x1004800' end='0x1005000' /></address-map>]]></parameter>
+  <parameter name="internalIrqMaskSystemInfo" value="15" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='onchip_memory2_0.s1' start='0x1802000' end='0x1804000' /><slave name='cpu_0.jtag_debug_module' start='0x1804800' end='0x1805000' /></address-map>]]></parameter>
   <parameter name="instAddrWidth" value="25" />
   <parameter name="impl" value="Tiny" />
   <parameter name="icache_size" value="_4096" />
@@ -413,7 +463,7 @@
   <parameter name="dcache_numTCDM" value="_0" />
   <parameter name="dcache_lineSize" value="_32" />
   <parameter name="dcache_bursts" value="false" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='onchip_memory2_0.s1' start='0x1002000' end='0x1004000' /><slave name='cpu_0.jtag_debug_module' start='0x1004800' end='0x1005000' /><slave name='uC_timer.s1' start='0x1005000' end='0x1005020' /><slave name='uart_0.s1' start='0x1005020' end='0x1005040' /><slave name='char_lcd.control_slave' start='0x1005040' end='0x1005050' /><slave name='altpll_0.pll_slave' start='0x1005050' end='0x1005060' /><slave name='LEDG.s1' start='0x1005060' end='0x1005070' /><slave name='LEDR.s1' start='0x1005070' end='0x1005080' /><slave name='note_0.s1' start='0x1005080' end='0x1005090' /><slave name='note_1.s1' start='0x1005090' end='0x10050A0' /><slave name='note_2.s1' start='0x10050A0' end='0x10050B0' /><slave name='note_3.s1' start='0x10050B0' end='0x10050C0' /><slave name='note_4.s1' start='0x10050C0' end='0x10050D0' /><slave name='note_5.s1' start='0x10050D0' end='0x10050E0' /><slave name='sysid.control_slave' start='0x1005100' end='0x1005108' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x1005108' end='0x1005110' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='sdram_0.s1' start='0x800000' end='0x1000000' /><slave name='cfi_flash_0.s1' start='0x1400000' end='0x1800000' /><slave name='onchip_memory2_0.s1' start='0x1802000' end='0x1804000' /><slave name='cpu_0.jtag_debug_module' start='0x1804800' end='0x1805000' /><slave name='uC_timer.s1' start='0x1805000' end='0x1805020' /><slave name='uart_0.s1' start='0x1805020' end='0x1805040' /><slave name='char_lcd.control_slave' start='0x1805040' end='0x1805050' /><slave name='altpll_0.pll_slave' start='0x1805050' end='0x1805060' /><slave name='LEDG.s1' start='0x1805060' end='0x1805070' /><slave name='LEDR.s1' start='0x1805070' end='0x1805080' /><slave name='note_0.s1' start='0x1805080' end='0x1805090' /><slave name='note_1.s1' start='0x1805090' end='0x18050A0' /><slave name='note_2.s1' start='0x18050A0' end='0x18050B0' /><slave name='note_3.s1' start='0x18050B0' end='0x18050C0' /><slave name='note_4.s1' start='0x18050C0' end='0x18050D0' /><slave name='note_5.s1' start='0x18050D0' end='0x18050E0' /><slave name='switches.s1' start='0x18050E0' end='0x18050F0' /><slave name='sysid.control_slave' start='0x18050F0' end='0x18050F8' /><slave name='jtag_uart_0.avalon_jtag_slave' start='0x18050F8' end='0x1805100' /></address-map>]]></parameter>
   <parameter name="dataAddrWidth" value="25" />
   <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
   <parameter name="cpuReset" value="false" />
@@ -804,6 +854,42 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="20" />
  </module>
+ <module kind="altera_avalon_pio" version="10.1" enabled="1" name="switches">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="true" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="EDGE" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="8" />
+ </module>
+ <module
+   kind="altera_avalon_cfi_flash"
+   version="10.1"
+   enabled="1"
+   name="cfi_flash_0">
+  <parameter name="addressWidth" value="22" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="corePreset" value="CUSTOM" />
+  <parameter name="dataWidth" value="8" />
+  <parameter name="holdTime" value="40" />
+  <parameter name="setupTime" value="40" />
+  <parameter name="sharedPorts" value="" />
+  <parameter name="timingUnits" value="NS" />
+  <parameter name="waitTime" value="140" />
+ </module>
+ <module
+   kind="altera_avalon_tri_state_bridge"
+   version="10.1"
+   enabled="1"
+   name="tri_state_bridge_0">
+  <parameter name="registerIncomingSignals" value="true" />
+ </module>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="cpu_0.clk" />
  <connection
    kind="avalon"
@@ -811,7 +897,7 @@
    start="cpu_0.instruction_master"
    end="cpu_0.jtag_debug_module">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01004800" />
+  <parameter name="baseAddress" value="0x01804800" />
  </connection>
  <connection
    kind="avalon"
@@ -819,7 +905,7 @@
    start="cpu_0.data_master"
    end="cpu_0.jtag_debug_module">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01004800" />
+  <parameter name="baseAddress" value="0x01804800" />
  </connection>
  <connection
    kind="clock"
@@ -832,7 +918,7 @@
    start="cpu_0.instruction_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01002000" />
+  <parameter name="baseAddress" value="0x01802000" />
  </connection>
  <connection
    kind="avalon"
@@ -840,7 +926,7 @@
    start="cpu_0.data_master"
    end="onchip_memory2_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01002000" />
+  <parameter name="baseAddress" value="0x01802000" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="sysid.clk" />
  <connection
@@ -849,7 +935,7 @@
    start="cpu_0.data_master"
    end="sysid.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005100" />
+  <parameter name="baseAddress" value="0x018050f0" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="uC_timer.clk" />
  <connection
@@ -858,7 +944,7 @@
    start="cpu_0.data_master"
    end="uC_timer.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005000" />
+  <parameter name="baseAddress" value="0x01805000" />
  </connection>
  <connection
    kind="interrupt"
@@ -874,7 +960,7 @@
    start="cpu_0.data_master"
    end="jtag_uart_0.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005108" />
+  <parameter name="baseAddress" value="0x018050f8" />
  </connection>
  <connection
    kind="interrupt"
@@ -890,7 +976,7 @@
    start="cpu_0.data_master"
    end="char_lcd.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005040" />
+  <parameter name="baseAddress" value="0x01805040" />
  </connection>
  <connection
    kind="clock"
@@ -903,7 +989,7 @@
    start="cpu_0.data_master"
    end="altpll_0.pll_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005050" />
+  <parameter name="baseAddress" value="0x01805050" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="sdram_0.clk" />
  <connection
@@ -929,7 +1015,7 @@
    start="cpu_0.data_master"
    end="uart_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005020" />
+  <parameter name="baseAddress" value="0x01805020" />
  </connection>
  <connection kind="interrupt" version="10.1" start="cpu_0.d_irq" end="uart_0.irq">
   <parameter name="irqNumber" value="2" />
@@ -937,12 +1023,12 @@
  <connection kind="clock" version="10.1" start="clk_0.clk" end="LEDG.clk" />
  <connection kind="avalon" version="10.1" start="cpu_0.data_master" end="LEDG.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005060" />
+  <parameter name="baseAddress" value="0x01805060" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="LEDR.clk" />
  <connection kind="avalon" version="10.1" start="cpu_0.data_master" end="LEDR.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005070" />
+  <parameter name="baseAddress" value="0x01805070" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_0.clk" />
  <connection
@@ -951,7 +1037,7 @@
    start="cpu_0.data_master"
    end="note_0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005080" />
+  <parameter name="baseAddress" value="0x01805080" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_1.clk" />
  <connection
@@ -960,7 +1046,7 @@
    start="cpu_0.data_master"
    end="note_1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x01005090" />
+  <parameter name="baseAddress" value="0x01805090" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_2.clk" />
  <connection
@@ -969,7 +1055,7 @@
    start="cpu_0.data_master"
    end="note_2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010050a0" />
+  <parameter name="baseAddress" value="0x018050a0" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_3.clk" />
  <connection
@@ -978,7 +1064,7 @@
    start="cpu_0.data_master"
    end="note_3.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010050b0" />
+  <parameter name="baseAddress" value="0x018050b0" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_4.clk" />
  <connection
@@ -987,7 +1073,7 @@
    start="cpu_0.data_master"
    end="note_4.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010050c0" />
+  <parameter name="baseAddress" value="0x018050c0" />
  </connection>
  <connection kind="clock" version="10.1" start="clk_0.clk" end="note_5.clk" />
  <connection
@@ -996,6 +1082,52 @@
    start="cpu_0.data_master"
    end="note_5.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x010050d0" />
+  <parameter name="baseAddress" value="0x018050d0" />
+ </connection>
+ <connection kind="clock" version="10.1" start="clk_0.clk" end="switches.clk" />
+ <connection
+   kind="avalon"
+   version="10.1"
+   start="cpu_0.data_master"
+   end="switches.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x018050e0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="10.1"
+   start="cpu_0.d_irq"
+   end="switches.irq">
+  <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection kind="clock" version="10.1" start="clk_0.clk" end="cfi_flash_0.clk" />
+ <connection
+   kind="clock"
+   version="10.1"
+   start="clk_0.clk"
+   end="tri_state_bridge_0.clk" />
+ <connection
+   kind="avalon"
+   version="10.1"
+   start="cpu_0.instruction_master"
+   end="tri_state_bridge_0.avalon_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="10.1"
+   start="cpu_0.data_master"
+   end="tri_state_bridge_0.avalon_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+ </connection>
+ <connection
+   kind="avalon_tristate"
+   version="10.1"
+   start="tri_state_bridge_0.tristate_master"
+   end="cfi_flash_0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x01400000" />
  </connection>
 </system>

@@ -1,9 +1,5 @@
------------------------------------------------------------
---  Ver  :| Original Author   		:| Additional Author :| 
---  V1.0 :| Simon Doherty			   :| Eric Lunty        :| 
------------------------------------------------------------
---	  Changed it to output up to 6 waveforms              :|
------------------------------------------------------------
+-- Original Author : Simon Doherty
+-- Additional Authors : Eric Lunty, Kyle Brooks, Peter Roland
 
 
 library ieee;

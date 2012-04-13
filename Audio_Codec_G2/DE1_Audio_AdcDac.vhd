@@ -1,14 +1,5 @@
------------------------------------------------------------
---  Ver  :| Original Author   	    :| Additional Author :| 
---  V1.0 :| Bharathwaj Muthuswamy   :| Eric Lunty        :| 
------------------------------------------------------------
---	  Minor code tweaks + glue code added            		:|
------------------------------------------------------------
-
--- This design is a VHDL interface to the audio codec on the DE2 board
--- Placing SW(0) in the UP position runs the design
--- SW(16) + Key(2) controls note up / down (toggled with switch)
--- The codec is configured for 16-bit 48 KHz sampling frequency.
+-- Original Author : Bharathwaj Muthuswamy
+-- Additional Authors : Eric Lunty, Kyle Brooks, Peter Roland
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -49,6 +40,13 @@ entity DE1_Audio_AdcDac is port
 	GPIO_1 : inout std_logic_vector(35 downto 0);
 	HEX0,HEX1,HEX2,HEX3 : out std_logic_vector(6 downto 0);
 	
+	FL_ADDR : out std_logic_vector(21 downto 0);
+	FL_DQ : inout std_logic_vector(7 downto 0);
+	FL_CE_N : out std_logic; 
+	FL_OE_N	 : out std_logic; 
+	FL_WE_N : out std_logic; 
+	FL_RST_N : out std_logic;
+	
 	UART_RXD : in std_logic;
 	UART_TXD : out std_logic
 	);
@@ -88,12 +86,21 @@ architecture topLevel of DE1_Audio_AdcDac is
                  -- the_uart_0
                     signal rxd_to_the_uart_0 : IN STD_LOGIC;
                     signal txd_from_the_uart_0 : OUT STD_LOGIC;
+						  
+					-- the_tri_state_bridge_0_avalon_slave
+					   signal address_to_the_cfi_flash_0 : OUT STD_LOGIC_VECTOR (21 DOWNTO 0);
+						signal data_to_and_from_the_cfi_flash_0 : INOUT STD_LOGIC_VECTOR (7 DOWNTO 0);
+						signal read_n_to_the_cfi_flash_0 : OUT STD_LOGIC;
+						signal select_n_to_the_cfi_flash_0 : OUT STD_LOGIC;
+						signal write_n_to_the_cfi_flash_0 : OUT STD_LOGIC;
+						  
 						  signal out_port_from_the_note_0 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_1 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_2 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_3 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
 						  signal out_port_from_the_note_4 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
-						  signal out_port_from_the_note_5 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0)
+						  signal out_port_from_the_note_5 : OUT STD_LOGIC_VECTOR(19 DOWNTO 0);
+						  signal in_port_to_the_switches : IN STD_LOGIC_VECTOR (7 DOWNTO 0)
 	);
 	end component SOPC_File;
 
@@ -169,13 +176,16 @@ architecture topLevel of DE1_Audio_AdcDac is
 	
 begin
 
-	--Tell the LCD screen to power up
-        LCD_ON <= '1';
+		--Tell the LCD screen to power up
+      LCD_ON <= '1';
+		  
+		--Pull the flash reset high
+		FL_RST_N <= '1';
 
-        DRAM_BA_1 <= BA(1);
-        DRAM_BA_0 <= BA(0);
-        DRAM_UDQM <= DQM(1);
-        DRAM_LDQM <= DQM(0);
+      DRAM_BA_1 <= BA(1);
+      DRAM_BA_0 <= BA(0);
+      DRAM_UDQM <= DQM(1);
+      DRAM_LDQM <= DQM(0);
 	
 	mainSystem: SOPC_File port map
 	(
@@ -203,14 +213,21 @@ begin
 		DRAM_WE_N,	
 		
 		UART_RXD, 
-		UART_TXD, 
+		UART_TXD,
+	
+		FL_ADDR,
+		FL_DQ,
+		FL_OE_N,
+		FL_CE_N,
+		FL_WE_N,	
 		
-	  note0,
-	  note1,
-	  note2,
-	  note3,
-	  note4,
-	  note5
+		note0,
+		note1,
+		note2,
+		note3,
+		note4,
+		note5,
+		SW(17 downto 10)
 	);
 						  
 	--Set up all the audio codec data					  

@@ -1,11 +1,4 @@
--- DE1 ADC DAC interface
--- delay counter
--- A simple delay module to start the ADC/DAC data transfers 40 ms after SW(0) is pushed up
--- References:  
--- 1.  Digital Differential Analyzer: http://courses.cit.cornell.edu/ece576/DDA/index.htm
--- Bharathwaj Muthuswamy
--- EECS 3921 Fall 2010
--- muthuswamy@msoe.edu
+-- Original Author : Bharathwaj Muthuswamy
 
 library ieee;
 use ieee.std_logic_1164.all;

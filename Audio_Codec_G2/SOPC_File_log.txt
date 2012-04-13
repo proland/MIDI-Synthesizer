@@ -2,27 +2,27 @@ Altera SOPC Builder Version 10.11 Build 197
 Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
 
 
-# 2012.03.26 14:50:08 (*) mk_custom_sdk starting
-# 2012.03.26 14:50:08 (*) Reading project /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf.
+# 2012.04.11 14:53:13 (*) mk_custom_sdk starting
+# 2012.04.11 14:53:13 (*) Reading project /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf.
 
-# 2012.03.26 14:50:08 (*) Finding all CPUs
-# 2012.03.26 14:50:08 (*) Finding all available components
-# 2012.03.26 14:50:08 (*) Reading /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/.sopc_builder/install.ptf
+# 2012.04.11 14:53:13 (*) Finding all CPUs
+# 2012.04.11 14:53:13 (*) Finding all available components
+# 2012.04.11 14:53:13 (*) Reading /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/.sopc_builder/install.ptf
 
-# 2012.03.26 14:50:08 (*) Found 63 components
+# 2012.04.11 14:53:13 (*) Found 63 components
 
-# 2012.03.26 14:50:09 (*) Finding all peripherals
+# 2012.04.11 14:53:13 (*) Finding all peripherals
 
-# 2012.03.26 14:50:09 (*) Finding software components
+# 2012.04.11 14:53:13 (*) Finding software components
 
-# 2012.03.26 14:50:09 (*) (Legacy SDK Generation Skipped)
-# 2012.03.26 14:50:09 (*) (All TCL Script Generation Skipped)
-# 2012.03.26 14:50:09 (*) (No Libraries Built)
-# 2012.03.26 14:50:09 (*) (Contents Generation Skipped)
-# 2012.03.26 14:50:09 (*) mk_custom_sdk finishing
+# 2012.04.11 14:53:14 (*) (Legacy SDK Generation Skipped)
+# 2012.04.11 14:53:14 (*) (All TCL Script Generation Skipped)
+# 2012.04.11 14:53:14 (*) (No Libraries Built)
+# 2012.04.11 14:53:14 (*) (Contents Generation Skipped)
+# 2012.04.11 14:53:14 (*) mk_custom_sdk finishing
+# 2012.04.11 14:53:14 (*) Starting generation for system: SOPC_File.
 
-# 2012.03.26 14:50:09 (*) Starting generation for system: SOPC_File.
-
+.
 .
 .
 .
@@ -30,77 +30,83 @@ Copyright (c) 1999-2009 Altera Corporation.  All rights reserved.
 .
 .
 .
-.
-........
-
-# 2012.03.26 14:50:10 (*) Running Generator Program for cpu_0
-
-# 2012.03.26 14:50:11 (*) Starting Nios II generation
-# 2012.03.26 14:50:11 (*)   Checking for plaintext license.
-# 2012.03.26 14:50:11 (*)   Couldn't query license setup in Quartus directory /opt/altera/10.1sp1/quartus
-# 2012.03.26 14:50:11 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
-# 2012.03.26 14:50:11 (*)   Plaintext license not found.
-# 2012.03.26 14:50:11 (*)   No license required to generate encrypted Nios II/e.
-# 2012.03.26 14:50:11 (*)   Getting CPU configuration settings
-# 2012.03.26 14:50:11 (*)   Elaborating CPU configuration settings
-# 2012.03.26 14:50:11 (*)   Creating all objects for CPU
-# 2012.03.26 14:50:12 (*)   Generating HDL from CPU objects
-# 2012.03.26 14:50:12 (*)   Creating plain-text HDL
-# 2012.03.26 14:50:15 (*) Done Nios II generation
-
-# 2012.03.26 14:50:15 (*) Running Generator Program for onchip_memory2_0
-
-# 2012.03.26 14:50:16 (*) Running Generator Program for sysid
-
-# 2012.03.26 14:50:17 (*) Running Generator Program for uC_timer
-
-# 2012.03.26 14:50:17 (*) Running Generator Program for jtag_uart_0
-
-# 2012.03.26 14:50:18 (*) Running Generator Program for char_lcd
-
-# 2012.03.26 14:50:19 (*) Running Generator Program for sdram_0
-
-# 2012.03.26 14:50:19 (*) Running Generator Program for uart_0
-
-# 2012.03.26 14:50:21 (*) Running Generator Program for LEDG
-
-# 2012.03.26 14:50:21 (*) Running Generator Program for LEDR
-
-# 2012.03.26 14:50:22 (*) Running Generator Program for note_0
-
-# 2012.03.26 14:50:22 (*) Running Generator Program for note_1
-
-# 2012.03.26 14:50:23 (*) Running Generator Program for note_2
-
-# 2012.03.26 14:50:23 (*) Running Generator Program for note_3
-
-# 2012.03.26 14:50:24 (*) Running Generator Program for note_4
-
-# 2012.03.26 14:50:25 (*) Running Generator Program for note_5
-
+...
+......
 .
 
 
-# 2012.03.26 14:50:25 (*) Running Test Generator Program for sdram_0
+# 2012.04.11 14:53:15 (*) Running Generator Program for cpu_0
 
-# 2012.03.26 14:50:25 (*) Making arbitration and system (top) modules.
+# 2012.04.11 14:53:16 (*) Starting Nios II generation
+# 2012.04.11 14:53:16 (*)   Checking for plaintext license.
+# 2012.04.11 14:53:16 (*)   Couldn't query license setup in Quartus directory /opt/altera/10.1sp1/quartus
+# 2012.04.11 14:53:16 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+# 2012.04.11 14:53:16 (*)   Plaintext license not found.
+# 2012.04.11 14:53:16 (*)   No license required to generate encrypted Nios II/e.
+# 2012.04.11 14:53:16 (*)   Getting CPU configuration settings
+# 2012.04.11 14:53:16 (*)   Elaborating CPU configuration settings
+# 2012.04.11 14:53:16 (*)   Creating all objects for CPU
+# 2012.04.11 14:53:17 (*)   Generating HDL from CPU objects
+# 2012.04.11 14:53:17 (*)   Creating plain-text HDL
+# 2012.04.11 14:53:20 (*) Done Nios II generation
 
-# 2012.03.26 14:50:31 (*) Generating Quartus symbol for top level: SOPC_File
+# 2012.04.11 14:53:21 (*) Running Generator Program for onchip_memory2_0
 
-# 2012.03.26 14:50:31 (*) Generating Symbol /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.bsf
+# 2012.04.11 14:53:21 (*) Running Generator Program for sysid
 
-# 2012.03.26 14:50:31 (*) Creating command-line system-generation script: /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File_generation_script
+# 2012.04.11 14:53:22 (*) Running Generator Program for uC_timer
 
-# 2012.03.26 14:50:31 (*) Running setup for HDL simulator: modelsim
+# 2012.04.11 14:53:23 (*) Running Generator Program for jtag_uart_0
+
+# 2012.04.11 14:53:24 (*) Running Generator Program for char_lcd
+
+# 2012.04.11 14:53:24 (*) Running Generator Program for sdram_0
+
+# 2012.04.11 14:53:25 (*) Running Generator Program for uart_0
+
+# 2012.04.11 14:53:26 (*) Running Generator Program for LEDG
+
+# 2012.04.11 14:53:27 (*) Running Generator Program for LEDR
+
+# 2012.04.11 14:53:28 (*) Running Generator Program for note_0
+
+# 2012.04.11 14:53:28 (*) Running Generator Program for note_1
+
+# 2012.04.11 14:53:29 (*) Running Generator Program for note_2
+
+# 2012.04.11 14:53:29 (*) Running Generator Program for note_3
+
+# 2012.04.11 14:53:30 (*) Running Generator Program for note_4
+
+# 2012.04.11 14:53:31 (*) Running Generator Program for note_5
+
+# 2012.04.11 14:53:31 (*) Running Generator Program for switches
+
+# 2012.04.11 14:53:32 (*) Running Generator Program for cfi_flash_0
+
+.
 
 
-# 2012.03.26 14:50:31 (*) Completed generation for system: SOPC_File.
-# 2012.03.26 14:50:31 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
+# 2012.04.11 14:53:33 (*) Running Test Generator Program for sdram_0
+
+# 2012.04.11 14:53:33 (*) Making arbitration and system (top) modules.
+
+# 2012.04.11 14:53:40 (*) Generating Quartus symbol for top level: SOPC_File
+
+# 2012.04.11 14:53:40 (*) Generating Symbol /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.bsf
+
+# 2012.04.11 14:53:40 (*) Creating command-line system-generation script: /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File_generation_script
+
+# 2012.04.11 14:53:40 (*) Running setup for HDL simulator: modelsim
+
+
+# 2012.04.11 14:53:40 (*) Completed generation for system: SOPC_File.
+# 2012.04.11 14:53:40 (*) THE FOLLOWING SYSTEM ITEMS HAVE BEEN GENERATED:
   SOPC Builder database : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf 
   System HDL Model : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.vhd 
   System Generation Script : /afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File_generation_script 
 
-# 2012.03.26 14:50:31 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
+# 2012.04.11 14:53:40 (*) SUCCESS: SYSTEM GENERATION COMPLETED.
 
 
 Press 'Exit' to exit.

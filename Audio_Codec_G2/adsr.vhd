@@ -1,4 +1,6 @@
--- Taken from http://code.google.com/p/rekonstrukt/source/browse/trunk/vhdl/?r=139
+-- Original Author : Hans Huebner
+-- Additional Authors : Eric Lunty, Kyle Brooks, Peter Roland
+
 library ieee;
 use ieee.numeric_std.all;
 use ieee.std_logic_1164.all;
@@ -9,7 +11,6 @@ entity adsr is port
     reset : in std_logic;
     clk : in std_logic;
     attackTime : in std_logic_vector(7 downto 0);
-    decayTime : in std_logic_vector(7 downto 0);
     sustainLevel : in std_logic_vector(11 downto 0);
     releaseTime : in std_logic_vector(7 downto 0);
     velocity : in std_logic_vector(11 downto 0);
@@ -20,7 +21,7 @@ end adsr;
 
 architecture rtl of adsr is
   
-  type state_type is (s_attack, s_decay, s_sustain, s_release);
+  type state_type is (s_attack, s_sustain, s_release);
   signal state : state_type;
 	 
   signal result : std_logic_vector(23 downto 0) := (others => '0');
@@ -78,21 +79,6 @@ architecture rtl of adsr is
                 level <= level + 1;
                 phase_counter <= (others => '0');
                 if level = velocity then
-                  state <= s_decay;
-                end if;
-              end if;
-            end if;
-
-          --Decay stage, will go until it reaches sustainLevel
-			 when s_decay =>
-            if velocity = 0 then
-              state <= s_release;
-            else
-              phase_counter <= phase_counter + 1;
-              if phase_counter = decayTime then
-                level <= level - 1;
-                phase_counter <= (others => '0');
-                if level = sustainLevel then
                   state <= s_sustain;
                 end if;
               end if;

@@ -1,16 +1,16 @@
-Fitter Status : Successful - Fri Mar 30 14:01:28 2012
+Fitter Status : Successful - Wed Apr 11 15:07:04 2012
 Quartus II Version : 10.1 Build 197 01/19/2011 SP 1 SJ Web Edition
 Revision Name : MidiSynth
 Top-level Entity Name : DE1_Audio_AdcDac
 Family : Cyclone II
 Device : EP2C35F672C6
 Timing Models : Final
-Total logic elements : 3,731 / 33,216 ( 11 % )
-    Total combinational functions : 3,535 / 33,216 ( 11 % )
-    Dedicated logic registers : 1,652 / 33,216 ( 5 % )
-Total registers : 1704
-Total pins : 173 / 475 ( 36 % )
+Total logic elements : 5,986 / 33,216 ( 18 % )
+    Total combinational functions : 5,720 / 33,216 ( 17 % )
+    Dedicated logic registers : 2,203 / 33,216 ( 7 % )
+Total registers : 2304
+Total pins : 207 / 475 ( 44 % )
 Total virtual pins : 0
-Total memory bits : 175,104 / 483,840 ( 36 % )
-Embedded Multiplier 9-bit elements : 4 / 70 ( 6 % )
+Total memory bits : 371,712 / 483,840 ( 77 % )
+Embedded Multiplier 9-bit elements : 12 / 70 ( 17 % )
 Total PLLs : 2 / 4 ( 50 % )

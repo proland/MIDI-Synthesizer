@@ -67,6 +67,13 @@ SYSTEM SOPC_File
       desc_column_width = "75";
       base_column_width = "75";
       end_column_width = "75";
+      BOARD_INFO 
+      {
+         altera_avalon_cfi_flash 
+         {
+            reference_designators = "";
+         }
+      }
       do_log_history = "0";
    }
    MODULE cpu_0
@@ -164,13 +171,13 @@ SYSTEM SOPC_File
          {
             Entry cpu_0/jtag_debug_module
             {
-               address = "0x01004800";
+               address = "0x01804800";
                span = "0x00000800";
                is_bridge = "0";
             }
             Entry onchip_memory2_0/s1
             {
-               address = "0x01002000";
+               address = "0x01802000";
                span = "0x00002000";
                is_bridge = "0";
             }
@@ -178,6 +185,12 @@ SYSTEM SOPC_File
             {
                address = "0x00800000";
                span = "0x00800000";
+               is_bridge = "0";
+            }
+            Entry cfi_flash_0/s1
+            {
+               address = "0x01400000";
+               span = "0x00400000";
                is_bridge = "0";
             }
          }
@@ -320,14 +333,14 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/instruction_master
             {
                priority = "1";
-               Offset_Address = "0x01004800";
+               Offset_Address = "0x01804800";
             }
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01004800";
+               Offset_Address = "0x01804800";
             }
-            Base_Address = "0x01004800";
+            Base_Address = "0x01804800";
             Is_Readable = "1";
             Is_Writeable = "1";
             Uses_Tri_State_Data_Bus = "0";
@@ -528,43 +541,43 @@ SYSTEM SOPC_File
          {
             Entry cpu_0/jtag_debug_module
             {
-               address = "0x01004800";
+               address = "0x01804800";
                span = "0x00000800";
                is_bridge = "0";
             }
             Entry onchip_memory2_0/s1
             {
-               address = "0x01002000";
+               address = "0x01802000";
                span = "0x00002000";
                is_bridge = "0";
             }
             Entry sysid/control_slave
             {
-               address = "0x01005100";
+               address = "0x018050f0";
                span = "0x00000008";
                is_bridge = "0";
             }
             Entry uC_timer/s1
             {
-               address = "0x01005000";
+               address = "0x01805000";
                span = "0x00000020";
                is_bridge = "0";
             }
             Entry jtag_uart_0/avalon_jtag_slave
             {
-               address = "0x01005108";
+               address = "0x018050f8";
                span = "0x00000008";
                is_bridge = "0";
             }
             Entry char_lcd/control_slave
             {
-               address = "0x01005040";
+               address = "0x01805040";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry altpll_0/pll_slave
             {
-               address = "0x01005050";
+               address = "0x01805050";
                span = "0x00000010";
                is_bridge = "0";
             }
@@ -576,56 +589,68 @@ SYSTEM SOPC_File
             }
             Entry uart_0/s1
             {
-               address = "0x01005020";
+               address = "0x01805020";
                span = "0x00000020";
                is_bridge = "0";
             }
             Entry LEDG/s1
             {
-               address = "0x01005060";
+               address = "0x01805060";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry LEDR/s1
             {
-               address = "0x01005070";
+               address = "0x01805070";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_0/s1
             {
-               address = "0x01005080";
+               address = "0x01805080";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_1/s1
             {
-               address = "0x01005090";
+               address = "0x01805090";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_2/s1
             {
-               address = "0x010050a0";
+               address = "0x018050a0";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_3/s1
             {
-               address = "0x010050b0";
+               address = "0x018050b0";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_4/s1
             {
-               address = "0x010050c0";
+               address = "0x018050c0";
                span = "0x00000010";
                is_bridge = "0";
             }
             Entry note_5/s1
             {
-               address = "0x010050d0";
+               address = "0x018050d0";
                span = "0x00000010";
+               is_bridge = "0";
+            }
+            Entry switches/s1
+            {
+               address = "0x018050e0";
+               span = "0x00000010";
+               is_bridge = "0";
+            }
+            Entry cfi_flash_0/s1
+            {
+               address = "0x01400000";
+               span = "0x00400000";
                is_bridge = "0";
             }
          }
@@ -717,7 +742,7 @@ SYSTEM SOPC_File
          hardware_multiply_impl = "no_mul";
          shift_rot_impl = "small_le_shift";
          gui_hardware_multiply_setting = "no_mul_small_le_shift";
-         reset_slave = "onchip_memory2_0/s1";
+         reset_slave = "cfi_flash_0/s1";
          break_slave = "cpu_0/jtag_debug_module";
          exc_slave = "onchip_memory2_0/s1";
          reset_offset = "0x00000000";
@@ -835,8 +860,8 @@ SYSTEM SOPC_File
             }
          }
          license_status = "none_required";
-         mainmem_slave = "sdram_0/s1";
-         datamem_slave = "sdram_0/s1";
+         mainmem_slave = "cfi_flash_0/s1";
+         datamem_slave = "cfi_flash_0/s1";
          maincomm_slave = "uart_0/s1";
          germs_monitor_id = "";
       }
@@ -1437,14 +1462,14 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/instruction_master
             {
                priority = "1";
-               Offset_Address = "0x01002000";
+               Offset_Address = "0x01802000";
             }
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01002000";
+               Offset_Address = "0x01802000";
             }
-            Base_Address = "0x01002000";
+            Base_Address = "0x01802000";
             Address_Group = "0";
             Has_IRQ = "0";
             Is_Channel = "1";
@@ -1489,7 +1514,7 @@ SYSTEM SOPC_File
                onchip_memory2_0 
                {
                   Command1 = "@echo Post-processing to create $(notdir $@)";
-                  Command2 = "elf2hex $(ELF) 0x01002000 0x1003FFF --width=32 $(QUARTUS_PROJECT_DIR)/onchip_memory2_0.hex --create-lanes=0 ";
+                  Command2 = "elf2hex $(ELF) 0x01802000 0x1803FFF --width=32 $(QUARTUS_PROJECT_DIR)/onchip_memory2_0.hex --create-lanes=0 ";
                   Dependency = "$(ELF)";
                   Target_File = "$(QUARTUS_PROJECT_DIR)/onchip_memory2_0.hex";
                }
@@ -1665,9 +1690,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005100";
+               Offset_Address = "0x018050f0";
             }
-            Base_Address = "0x01005100";
+            Base_Address = "0x018050f0";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -1689,7 +1714,7 @@ SYSTEM SOPC_File
          Has_Clock = "1";
          View 
          {
-            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>4F70D66E</b> (timestamp: Mon Mar 26, 2012 @2:49 PM)";
+            Settings_Summary = "System ID (at last Generate):<br> <b>00000000</b>    (unique ID tag) <br> <b>4F85EF11</b> (timestamp: Wed Apr 11, 2012 @2:52 PM)";
             MESSAGES 
             {
             }
@@ -1698,7 +1723,7 @@ SYSTEM SOPC_File
       WIZARD_SCRIPT_ARGUMENTS 
       {
          id = "0u";
-         timestamp = "1332794990u";
+         timestamp = "1334177553u";
          regenerate_values = "0";
          MAKE 
          {
@@ -1707,7 +1732,7 @@ SYSTEM SOPC_File
                verifysysid 
                {
                   All_Depends_On = "0";
-                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x01005100 --id=0 --timestamp=1332794990";
+                  Command = "nios2-download $(JTAG_CABLE)                                --sidp=0x018050f0 --id=0 --timestamp=1334177553";
                   Is_Phony = "1";
                   Target_File = "dummy_verifysysid_file";
                }
@@ -1821,13 +1846,13 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005000";
+               Offset_Address = "0x01805000";
             }
             IRQ_MASTER cpu_0/data_master
             {
                IRQ_Number = "0";
             }
-            Base_Address = "0x01005000";
+            Base_Address = "0x01805000";
             Address_Group = "0";
          }
       }
@@ -2002,13 +2027,13 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005108";
+               Offset_Address = "0x018050f8";
             }
             IRQ_MASTER cpu_0/data_master
             {
                IRQ_Number = "1";
             }
-            Base_Address = "0x01005108";
+            Base_Address = "0x018050f8";
             Address_Group = "0";
          }
       }
@@ -2205,9 +2230,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005040";
+               Offset_Address = "0x01805040";
             }
-            Base_Address = "0x01005040";
+            Base_Address = "0x01805040";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -2366,9 +2391,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005050";
+               Offset_Address = "0x01805050";
             }
-            Base_Address = "0x01005050";
+            Base_Address = "0x01805050";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
             {
@@ -3051,13 +3076,13 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005020";
+               Offset_Address = "0x01805020";
             }
             IRQ_MASTER cpu_0/data_master
             {
                IRQ_Number = "2";
             }
-            Base_Address = "0x01005020";
+            Base_Address = "0x01805020";
             Address_Group = "0";
          }
       }
@@ -3292,9 +3317,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005060";
+               Offset_Address = "0x01805060";
             }
-            Base_Address = "0x01005060";
+            Base_Address = "0x01805060";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -3460,9 +3485,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005070";
+               Offset_Address = "0x01805070";
             }
-            Base_Address = "0x01005070";
+            Base_Address = "0x01805070";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -3628,9 +3653,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005080";
+               Offset_Address = "0x01805080";
             }
-            Base_Address = "0x01005080";
+            Base_Address = "0x01805080";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -3796,9 +3821,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x01005090";
+               Offset_Address = "0x01805090";
             }
-            Base_Address = "0x01005090";
+            Base_Address = "0x01805090";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -3964,9 +3989,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x010050a0";
+               Offset_Address = "0x018050a0";
             }
-            Base_Address = "0x010050a0";
+            Base_Address = "0x018050a0";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -4132,9 +4157,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x010050b0";
+               Offset_Address = "0x018050b0";
             }
-            Base_Address = "0x010050b0";
+            Base_Address = "0x018050b0";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -4300,9 +4325,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x010050c0";
+               Offset_Address = "0x018050c0";
             }
-            Base_Address = "0x010050c0";
+            Base_Address = "0x018050c0";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -4468,9 +4493,9 @@ SYSTEM SOPC_File
             MASTERED_BY cpu_0/data_master
             {
                priority = "1";
-               Offset_Address = "0x010050d0";
+               Offset_Address = "0x018050d0";
             }
-            Base_Address = "0x010050d0";
+            Base_Address = "0x018050d0";
             Has_IRQ = "0";
             Address_Group = "0";
             IRQ_MASTER cpu_0/data_master
@@ -4546,6 +4571,471 @@ SYSTEM SOPC_File
          Simulation_HDL_Files = "";
          Synthesis_HDL_Files = "__PROJECT_DIRECTORY__/note_5.vhd";
          Synthesis_Only_Files = "";
+      }
+   }
+   MODULE switches
+   {
+      SLAVE s1
+      {
+         PORT_WIRING 
+         {
+            PORT clk
+            {
+               type = "clk";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT reset_n
+            {
+               type = "reset_n";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT irq
+            {
+               type = "irq";
+               width = "1";
+               direction = "output";
+               Is_Enabled = "1";
+            }
+            PORT address
+            {
+               type = "address";
+               width = "2";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT write_n
+            {
+               type = "write_n";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT writedata
+            {
+               type = "writedata";
+               width = "8";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT chipselect
+            {
+               type = "chipselect";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+            }
+            PORT readdata
+            {
+               type = "readdata";
+               width = "8";
+               direction = "output";
+               Is_Enabled = "1";
+            }
+         }
+         SYSTEM_BUILDER_INFO 
+         {
+            Has_IRQ = "1";
+            Bus_Type = "avalon";
+            Write_Wait_States = "0cycles";
+            Read_Wait_States = "1cycles";
+            Hold_Time = "0cycles";
+            Setup_Time = "0cycles";
+            Is_Printable_Device = "0";
+            Address_Alignment = "native";
+            Well_Behaved_Waitrequest = "0";
+            Is_Nonvolatile_Storage = "0";
+            Read_Latency = "0";
+            Is_Memory_Device = "0";
+            Maximum_Pending_Read_Transactions = "0";
+            Minimum_Uninterrupted_Run_Length = "1";
+            Accepts_Internal_Connections = "1";
+            Write_Latency = "0";
+            Is_Flash = "0";
+            Data_Width = "8";
+            Address_Width = "2";
+            Maximum_Burst_Size = "1";
+            Register_Incoming_Signals = "0";
+            Register_Outgoing_Signals = "0";
+            Interleave_Bursts = "0";
+            Linewrap_Bursts = "0";
+            Burst_On_Burst_Boundaries_Only = "0";
+            Always_Burst_Max_Burst = "0";
+            Is_Big_Endian = "0";
+            Is_Enabled = "1";
+            MASTERED_BY cpu_0/data_master
+            {
+               priority = "1";
+               Offset_Address = "0x018050e0";
+            }
+            IRQ_MASTER cpu_0/data_master
+            {
+               IRQ_Number = "3";
+            }
+            Base_Address = "0x018050e0";
+            Address_Group = "0";
+            Is_Readable = "1";
+            Is_Writable = "1";
+         }
+      }
+      PORT_WIRING 
+      {
+         PORT in_port
+         {
+            type = "export";
+            width = "8";
+            direction = "input";
+            Is_Enabled = "1";
+         }
+         PORT out_port
+         {
+            direction = "output";
+            Is_Enabled = "0";
+            width = "8";
+         }
+         PORT bidir_port
+         {
+            direction = "inout";
+            Is_Enabled = "0";
+            width = "8";
+         }
+      }
+      class = "altera_avalon_pio";
+      class_version = "7.08101";
+      SYSTEM_BUILDER_INFO 
+      {
+         Is_Enabled = "1";
+         Instantiate_In_System_Module = "1";
+         Wire_Test_Bench_Values = "1";
+         Top_Level_Ports_Are_Enumerated = "1";
+         Clock_Source = "clk_0";
+         Has_Clock = "1";
+         Date_Modified = "";
+         View 
+         {
+            MESSAGES 
+            {
+            }
+            Settings_Summary = " 8-bit PIO using <br>
+					
+					 input pins with edge type RISING and interrupt source EDGE
+					";
+         }
+      }
+      WIZARD_SCRIPT_ARGUMENTS 
+      {
+         Do_Test_Bench_Wiring = "0";
+         Driven_Sim_Value = "0";
+         has_tri = "0";
+         has_out = "0";
+         has_in = "1";
+         capture = "1";
+         Data_Width = "8";
+         reset_value = "0";
+         edge_type = "RISING";
+         irq_type = "EDGE";
+         bit_clearing_edge_register = "0";
+         bit_modifying_output_register = "0";
+      }
+      HDL_INFO 
+      {
+         Precompiled_Simulation_Library_Files = "";
+         Simulation_HDL_Files = "";
+         Synthesis_HDL_Files = "__PROJECT_DIRECTORY__/switches.vhd";
+         Synthesis_Only_Files = "";
+      }
+   }
+   MODULE cfi_flash_0
+   {
+      SLAVE s1
+      {
+         PORT_WIRING 
+         {
+            PORT data
+            {
+               type = "data";
+               width = "8";
+               direction = "inout";
+               Is_Enabled = "1";
+               is_shared = "0";
+            }
+            PORT address
+            {
+               type = "address";
+               width = "22";
+               direction = "input";
+               Is_Enabled = "1";
+               is_shared = "0";
+            }
+            PORT read_n
+            {
+               type = "read_n";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+               is_shared = "0";
+            }
+            PORT write_n
+            {
+               type = "write_n";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+               is_shared = "0";
+            }
+            PORT select_n
+            {
+               type = "chipselect_n";
+               width = "1";
+               direction = "input";
+               Is_Enabled = "1";
+               is_shared = "0";
+            }
+         }
+         SYSTEM_BUILDER_INFO 
+         {
+            Bus_Type = "avalon_tristate";
+            Write_Wait_States = "140ns";
+            Read_Wait_States = "140ns";
+            Hold_Time = "40ns";
+            Setup_Time = "40ns";
+            Is_Printable_Device = "0";
+            Address_Alignment = "dynamic";
+            Well_Behaved_Waitrequest = "0";
+            Is_Nonvolatile_Storage = "1";
+            Address_Span = "4194304";
+            Read_Latency = "0";
+            Is_Memory_Device = "1";
+            Maximum_Pending_Read_Transactions = "0";
+            Minimum_Uninterrupted_Run_Length = "1";
+            Accepts_Internal_Connections = "1";
+            Write_Latency = "0";
+            Is_Flash = "1";
+            Active_CS_Through_Read_Latency = "0";
+            Data_Width = "8";
+            Address_Width = "22";
+            Maximum_Burst_Size = "1";
+            Register_Incoming_Signals = "0";
+            Register_Outgoing_Signals = "0";
+            Interleave_Bursts = "0";
+            Linewrap_Bursts = "0";
+            Burst_On_Burst_Boundaries_Only = "0";
+            Always_Burst_Max_Burst = "0";
+            Is_Big_Endian = "0";
+            Is_Enabled = "1";
+            MASTERED_BY tri_state_bridge_0/tristate_master
+            {
+               priority = "1";
+               Offset_Address = "0x01400000";
+            }
+            Base_Address = "0x01400000";
+            Has_IRQ = "0";
+            Simulation_Num_Lanes = "1";
+            Convert_Xs_To_0 = "1";
+            Address_Group = "0";
+            IRQ_MASTER cpu_0/data_master
+            {
+               IRQ_Number = "NC";
+            }
+         }
+         WIZARD_SCRIPT_ARGUMENTS 
+         {
+            class = "altera_avalon_cfi_flash";
+            Supports_Flash_File_System = "1";
+            flash_reference_designator = "";
+         }
+      }
+      WIZARD_SCRIPT_ARGUMENTS 
+      {
+         Setup_Value = "40";
+         Wait_Value = "140";
+         Hold_Value = "40";
+         Timing_Units = "ns";
+         Unit_Multiplier = "1";
+         Size = "4194304";
+         MAKE 
+         {
+            MACRO 
+            {
+               CFI_FLASH_0_FLASHTARGET_ALT_SIM_PREFIX = "$(CFI_FLASH_0_FLASHTARGET_TMP1:0=)";
+               CFI_FLASH_0_FLASHTARGET_TMP1 = "$(ALT_SIM_OPTIMIZE:1=RUN_ON_HDL_SIMULATOR_ONLY_)";
+            }
+            MASTER cpu_0
+            {
+               MACRO 
+               {
+                  BOOT_COPIER = "boot_loader_cfi.srec";
+                  CPU_CLASS = "altera_nios2";
+                  CPU_RESET_ADDRESS = "0x1400000";
+               }
+            }
+            TARGET delete_placeholder_warning
+            {
+               cfi_flash_0 
+               {
+                  Command1 = "rm -f $(SIMDIR)/contents_file_warning.txt";
+                  Is_Phony = "1";
+                  Target_File = "do_delete_placeholder_warning";
+               }
+            }
+            TARGET flashfiles
+            {
+               cfi_flash_0 
+               {
+                  Command1 = "@echo Post-processing to create $(notdir $@)";
+                  Command2 = "elf2flash --input=$(ELF) --flash= --boot=$(DBL_QUOTE)$(shell $(DBL_QUOTE)$(QUARTUS_ROOTDIR)/sopc_builder/bin/find_sopc_component_dir$(DBL_QUOTE) $(CPU_CLASS) $(QUARTUS_PROJECT_DIR))/$(BOOT_COPIER)$(DBL_QUOTE) --outfile=$(CFI_FLASH_0_FLASHTARGET_ALT_SIM_PREFIX)cfi_flash_0.flash --sim_optimize=$(ALT_SIM_OPTIMIZE) --base=0x1400000 --end=0x17FFFFF --reset=$(CPU_RESET_ADDRESS) ";
+                  Dependency = "$(ELF)";
+                  Target_File = "$(CFI_FLASH_0_FLASHTARGET_ALT_SIM_PREFIX)cfi_flash_0.flash";
+               }
+            }
+            TARGET sim
+            {
+               cfi_flash_0 
+               {
+                  Command1 = "if [ ! -d $(SIMDIR) ]; then mkdir $(SIMDIR) ; fi";
+                  Command2 = "@echo Hardware simulation is not enabled for the target SOPC Builder system. Skipping creation of hardware simulation model contents and simulation symbol files. \\(Note: This does not affect the instruction set simulator.\\)";
+                  Command3 = "touch $(SIMDIR)/dummy_file";
+                  Dependency = "$(ELF)";
+                  Target_File = "$(SIMDIR)/dummy_file";
+               }
+            }
+         }
+      }
+      SYSTEM_BUILDER_INFO 
+      {
+         Simulation_Num_Lanes = "1";
+         Is_Enabled = "1";
+         Clock_Source = "clk_0";
+         Has_Clock = "1";
+         Make_Memory_Model = "1";
+         Instantiate_In_System_Module = "0";
+         Top_Level_Ports_Are_Enumerated = "1";
+         View 
+         {
+            MESSAGES 
+            {
+            }
+         }
+      }
+      class = "altera_avalon_cfi_flash";
+      class_version = "7.08101";
+      iss_model_name = "altera_avalon_flash";
+      HDL_INFO 
+      {
+      }
+   }
+   MODULE tri_state_bridge_0
+   {
+      SLAVE avalon_slave
+      {
+         PORT_WIRING 
+         {
+         }
+         SYSTEM_BUILDER_INFO 
+         {
+            Bus_Type = "avalon";
+            Write_Wait_States = "0cycles";
+            Read_Wait_States = "1cycles";
+            Hold_Time = "0cycles";
+            Setup_Time = "0cycles";
+            Is_Printable_Device = "0";
+            Address_Alignment = "dynamic";
+            Well_Behaved_Waitrequest = "0";
+            Is_Nonvolatile_Storage = "0";
+            Address_Span = "1";
+            Read_Latency = "0";
+            Is_Memory_Device = "0";
+            Maximum_Pending_Read_Transactions = "0";
+            Minimum_Uninterrupted_Run_Length = "1";
+            Accepts_Internal_Connections = "1";
+            Write_Latency = "0";
+            Is_Flash = "0";
+            Maximum_Burst_Size = "1";
+            Register_Incoming_Signals = "1";
+            Register_Outgoing_Signals = "1";
+            Interleave_Bursts = "0";
+            Linewrap_Bursts = "0";
+            Burst_On_Burst_Boundaries_Only = "0";
+            Always_Burst_Max_Burst = "0";
+            Is_Big_Endian = "0";
+            Is_Enabled = "1";
+            MASTERED_BY cpu_0/instruction_master
+            {
+               priority = "1";
+               Offset_Address = "N/A";
+               Base_Address = "N/A";
+            }
+            MASTERED_BY cpu_0/data_master
+            {
+               priority = "1";
+               Offset_Address = "N/A";
+               Base_Address = "N/A";
+            }
+            Bridges_To = "tristate_master";
+            Base_Address = "N/A";
+            Has_IRQ = "0";
+            IRQ = "N/A";
+            Address_Group = "0";
+            IRQ_MASTER cpu_0/data_master
+            {
+               IRQ_Number = "NC";
+            }
+         }
+      }
+      MASTER tristate_master
+      {
+         SYSTEM_BUILDER_INFO 
+         {
+            Bus_Type = "avalon_tristate";
+            Is_Asynchronous = "0";
+            DBS_Big_Endian = "0";
+            Adapts_To = "";
+            Maximum_Burst_Size = "1";
+            Register_Incoming_Signals = "0";
+            Register_Outgoing_Signals = "0";
+            Interleave_Bursts = "0";
+            Linewrap_Bursts = "0";
+            Burst_On_Burst_Boundaries_Only = "0";
+            Always_Burst_Max_Burst = "0";
+            Is_Big_Endian = "0";
+            Is_Enabled = "1";
+            Bridges_To = "avalon_slave";
+         }
+         PORT_WIRING 
+         {
+         }
+         MEMORY_MAP 
+         {
+            Entry cfi_flash_0/s1
+            {
+               address = "0x01400000";
+               span = "0x00400000";
+               is_bridge = "0";
+            }
+         }
+      }
+      WIZARD_SCRIPT_ARGUMENTS 
+      {
+      }
+      class = "altera_avalon_tri_state_bridge";
+      class_version = "7.08101";
+      SYSTEM_BUILDER_INFO 
+      {
+         Is_Enabled = "1";
+         Clock_Source = "clk_0";
+         Has_Clock = "1";
+         Instantiate_In_System_Module = "1";
+         Is_Bridge = "1";
+         Top_Level_Ports_Are_Enumerated = "1";
+         View 
+         {
+            MESSAGES 
+            {
+            }
+         }
       }
    }
 }

@@ -95,7 +95,7 @@ void task2(void* pdata) {
 		hi4 = *msg >> 4;
 		switch(hi4) {
 			case 9:
-//				printf("Note On, Channel %i ", lo4);
+				printf("Note On, Channel %i ", lo4);
 				msg2 = (INT8U*) OSQPend(qsemMsg, 0, &err);
 //				printf(" Note: %i ", *msg2);
 				msg3 = (INT8U*) OSQPend(qsemMsg, 0, &err);
@@ -106,7 +106,7 @@ void task2(void* pdata) {
 //				printf("%X", *note_0);
 				break;
 			case 8:
-//				printf("Note Off, Channel %i ", lo4);
+				printf("Note Off, Channel %i ", lo4);
 				msg2 = (int*) OSQPend(qsemMsg, 0, &err);
 //				printf(" Note: %i ", *msg2);
 				msg3 = (int*) OSQPend(qsemMsg, 0, &err);

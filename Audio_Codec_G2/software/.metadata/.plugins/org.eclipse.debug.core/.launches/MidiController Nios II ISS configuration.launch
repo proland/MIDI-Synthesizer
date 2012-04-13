@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="com.altera.nj.launch.ISSLaunch">
+<intAttribute key="com.altera.nj.launch.DEBUG_TARGET" value="2"/>
+<booleanAttribute key="com.altera.nj.launch.USE_ALTERA_GENERATED_GDB_SCRIPT" value="false"/>
+<stringAttribute key="org.eclipse.cdt.debug.mi.core.GDB_INIT" value=""/>
+<stringAttribute key="com.altera.nj.launch.PTF_CPU" value="cpu_0"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_ID" value="com.altera.nj.debug.core.NJGDBDebugger"/>
+<stringAttribute key="org.eclipse.cdt.launch.DEBUGGER_START_MODE" value="run"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROGRAM_NAME" value="Debug/MidiController.elf"/>
+<booleanAttribute key="com.altera.nj.launch.LAUNCH_FS2" value="false"/>
+<booleanAttribute key="com.altera.nj.launch.QUEST_TRACING" value="true"/>
+<stringAttribute key="com.altera.nj.launch.PTF_NAME" value="/afs/ualberta.ca/home/e/l/elunty/CMPE490/MidiSynth/SOPC_File.ptf"/>
+<stringAttribute key="org.eclipse.cdt.launch.PROJECT_ATTR" value="MidiController"/>
+<booleanAttribute key="com.altera.nj.launch.QUEST_TRACE_WARNING" value="true"/>
+<booleanAttribute key="org.eclipse.cdt.launch.DEBUGGER_STOP_AT_MAIN" value="true"/>
+<stringAttribute key="com.altera.nj.launch.QUEST_LOCATION" value="nios2-iss"/>
+</launchConfiguration>
